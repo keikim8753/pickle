@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏓 피클볼 완전 정복</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#f0f4fa;color:#1a1a2e;min-height:100vh}
+
+.hero{background:linear-gradient(145deg,#0D3D6B 0%,#1A5EA8 60%,#2980c4 100%);color:#fff;padding:56px 24px 48px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'🏓';font-size:140px;position:absolute;top:-20px;right:-20px;opacity:.07;transform:rotate(20deg)}
+.hero::after{content:'🎾';font-size:100px;position:absolute;bottom:-20px;left:-10px;opacity:.05;transform:rotate(-15deg)}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.18);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;letter-spacing:.05em;margin-bottom:16px}
+.hero h1{font-size:30px;font-weight:900;letter-spacing:-1px;margin-bottom:8px}
+.hero p{font-size:14px;opacity:.85;line-height:1.7;max-width:340px;margin:0 auto}
+
+.cards{padding:24px 16px;display:flex;flex-direction:column;gap:16px;max-width:480px;margin:0 auto}
+
+.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);text-decoration:none;color:inherit;display:block;transition:transform .15s, box-shadow .15s}
+.card:active{transform:scale(.98);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+
+.card-top{padding:24px 22px 18px;display:flex;align-items:flex-start;gap:14px}
+.card-icon{font-size:40px;flex-shrink:0;line-height:1}
+.card-info{flex:1}
+.card-label{font-size:11px;font-weight:700;letter-spacing:.08em;color:#94a3b8;text-transform:uppercase;margin-bottom:4px}
+.card-title{font-size:20px;font-weight:800;color:#0D3D6B;margin-bottom:6px}
+.card-desc{font-size:13px;color:#64748b;line-height:1.6}
+
+.card-bottom{padding:14px 22px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f1f5f9}
+.card-tag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
+.card-arrow{color:#1A5EA8;font-size:18px;font-weight:700}
+
+.tag-blue{background:#EBF4FC;color:#1A5EA8}
+.tag-green{background:#E6F4ED;color:#1A7A4A}
+
+.card-level{background:linear-gradient(135deg,#0D3D6B,#1A5EA8)}
+.card-glossary{background:linear-gradient(135deg,#11998e,#38ef7d)}
+
+.card-level .card-top{background:linear-gradient(135deg,#0D3D6B,#1A5EA8);color:#fff}
+.card-level .card-icon{filter:none}
+.card-level .card-label{color:rgba(255,255,255,.7)}
+.card-level .card-title{color:#fff}
+.card-level .card-desc{color:rgba(255,255,255,.85)}
+.card-level .card-bottom{border-top:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08)}
+.card-level .card-tag{background:rgba(255,255,255,.2);color:#fff}
+.card-level .card-arrow{color:rgba(255,255,255,.8)}
+
+.card-glossary .card-top{background:linear-gradient(135deg,#11998e,#38ef7d);color:#fff}
+.card-glossary .card-label{color:rgba(255,255,255,.7)}
+.card-glossary .card-title{color:#fff}
+.card-glossary .card-desc{color:rgba(255,255,255,.9)}
+.card-glossary .card-bottom{border-top:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1)}
+.card-glossary .card-tag{background:rgba(255,255,255,.25);color:#fff}
+.card-glossary .card-arrow{color:rgba(255,255,255,.9)}
+
+.info-box{background:#fff;border-radius:16px;padding:18px 20px;margin:0 16px 16px;max-width:448px;margin-left:auto;margin-right:auto;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.info-box h3{font-size:14px;font-weight:700;color:#0D3D6B;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.info-row{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:13px;color:#334155;border-bottom:1px solid #f8fafc}
+.info-row:last-child{border-bottom:none}
+.info-dot{width:6px;height:6px;border-radius:50%;background:#1A5EA8;flex-shrink:0;margin-top:6px}
+
+.footer{text-align:center;padding:24px 20px 32px;color:#94a3b8;font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">🏓 피클볼 완전 정복 시리즈</div>
+  <h1>우리 모임 피클볼<br>자료 모음</h1>
+  <p>레벨 자가진단부터 용어 사전까지<br>피클볼 실력 향상에 필요한 모든 것</p>
+</div>
+
+<div class="cards">
+  <a class="card card-level" href="level-check.html">
+    <div class="card-top">
+      <div class="card-icon">🎯</div>
+      <div class="card-info">
+        <div class="card-label">Self Assessment</div>
+        <div class="card-title">레벨 자가진단</div>
+        <div class="card-desc">35개 체크리스트로 나의 USAPA 레벨을 확인하고 맞춤 훈련 방향을 알아보세요</div>
+      </div>
+    </div>
+    <div class="card-bottom">
+      <span class="card-tag">2.0 ~ 5.0+ 진단</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </a>
+
+  <a class="card card-glossary" href="glossary.html">
+    <div class="card-top">
+      <div class="card-icon">📖</div>
+      <div class="card-info">
+        <div class="card-label">Terminology</div>
+        <div class="card-title">피클볼 용어 사전</div>
+        <div class="card-desc">딩크·키친·서드샷 드롭 등 피클볼 핵심 용어 50개+를 카테고리별로 검색하세요</div>
+      </div>
+    </div>
+    <div class="card-bottom">
+      <span class="card-tag">50개+ 용어 수록</span>
+      <span class="card-arrow">→</span>
+    </div>
+  </a>
+</div>
+
+<div class="info-box">
+  <h3>💡 활용 팁</h3>
+  <div class="info-row"><div class="info-dot"></div><div>레벨 자가진단 후 "지금 당장 해야 할 것"을 참고해 다음 훈련 목표를 정하세요</div></div>
+  <div class="info-row"><div class="info-dot"></div><div>경기 중 모르는 용어가 나오면 용어 사전에서 바로 검색하세요</div></div>
+  <div class="info-row"><div class="info-dot"></div><div>결과는 카카오톡으로 모임 단톡방에 공유할 수 있어요</div></div>
+</div>
+
+<div class="footer">
+  🏓 우리 피클볼 모임
+</div>
+
+</body>
+</html>
