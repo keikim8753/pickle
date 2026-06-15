@@ -60,11 +60,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun 
 .result-score{font-size:13px;margin-top:12px;opacity:.75}
 
 .level-2{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
+.level-225{background:linear-gradient(135deg,#7b6fd0,#9c59b6);color:#fff}
 .level-25{background:linear-gradient(135deg,#11998e,#38ef7d);color:#fff}
+.level-275{background:linear-gradient(135deg,#1aab88,#2ecc71);color:#fff}
 .level-3{background:linear-gradient(135deg,#1A5EA8,#2980c4);color:#fff}
+.level-325{background:linear-gradient(135deg,#2471a3,#5dade2);color:#fff}
 .level-35{background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff}
+.level-375{background:linear-gradient(135deg,#e056b0,#e84393);color:#fff}
 .level-4{background:linear-gradient(135deg,#f7971e,#ffd200);color:#fff}
+.level-425{background:linear-gradient(135deg,#f4a81d,#f7b733);color:#fff}
 .level-45{background:linear-gradient(135deg,#fc4a1a,#f7b733);color:#fff}
+.level-475{background:linear-gradient(135deg,#e84310,#fc6a1a);color:#fff}
 .level-5{background:linear-gradient(135deg,#0D3D6B,#1A5EA8);color:#fff}
 
 .detail-card{background:#fff;border-radius:16px;padding:18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
@@ -83,8 +89,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun 
 
 .share-section{background:#fff;border-radius:16px;padding:18px;margin-bottom:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .share-section p{font-size:13px;color:#64748b;margin-bottom:14px}
-.share-btn{background:#FEE500;color:#3C1E1E;border:none;border-radius:12px;padding:13px 24px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px}
+.share-btn{background:linear-gradient(90deg,#0D3D6B,#1A5EA8);color:#fff;border:none;border-radius:12px;padding:13px 24px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(26,94,168,.3)}
+.share-btn:disabled{background:#cbd5e1;box-shadow:none;cursor:not-allowed}
 .retry-btn{background:#f1f5f9;color:#0D3D6B;border:none;border-radius:12px;padding:12px 24px;font-size:14px;font-weight:600;cursor:pointer;width:100%}
+/* share card overlay */
+#shareCanvas{display:none}
 
 /* BOTTOM BTN */
 .bottom-bar{padding:16px;background:#fff;border-top:1px solid #e8edf5;position:sticky;bottom:0;z-index:100}
@@ -280,9 +289,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun 
   <div class="next-steps" id="nextSteps"></div>
 
   <div class="share-section">
-    <p>결과를 카카오톡으로 공유해보세요!</p>
-    <button class="share-btn" onclick="shareKakao()">
-      💬 카카오톡 공유하기
+    <p>결과 이미지를 저장하거나 공유해보세요!</p>
+    <button class="share-btn" id="shareImgBtn" onclick="shareImage()">
+      📸 이미지로 저장 / 공유하기
     </button>
     <button class="retry-btn" onclick="retry()">🔄 다시 진단하기</button>
   </div>
@@ -290,14 +299,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun 
 
 <div class="toast" id="toast"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 const items = document.querySelectorAll('.item');
 let checkedCount = 0;
-
-const sections = [
-  document.querySelectorAll('.section:nth-child(1) .item'),
-  document.querySelectorAll('.section:nth-child(2) .item'),
-];
 
 function toggle(el) {
   el.classList.toggle('checked');
@@ -314,13 +319,91 @@ function updateProgress() {
   btn.textContent = checkedCount > 0 ? ' (' + checkedCount + '개 선택)' : '';
 }
 
-function getSectionChecked(sectionIndex) {
-  const allSections = document.querySelectorAll('.section');
-  const sec = allSections[sectionIndex];
-  if (!sec) return {checked:0, total:0};
-  const all = sec.querySelectorAll('.item');
-  const checked = sec.querySelectorAll('.item.checked');
-  return {checked: checked.length, total: all.length};
+// ─── 0.25단위 레벨 계산 ─────────────────────────────────────────
+// 각 체크 항목의 data-level을 실수 레벨로 변환
+const LEVEL_VAL = {'2':2.0,'25':2.5,'3':3.0,'35':3.5,'4':4.0,'45':4.5,'5':5.0};
+
+// 7개 섹션별 가중치 (핵심 기술에 더 높은 가중치)
+const SEC_WEIGHT = [0.10, 0.13, 0.13, 0.20, 0.15, 0.17, 0.12];
+
+function calcLevel() {
+  const secs = document.querySelectorAll('.section');
+  let weightedScore = 0;
+  let totalWeight = 0;
+
+  secs.forEach((sec, i) => {
+    const allItems = sec.querySelectorAll('.item');
+    const checkedItems = sec.querySelectorAll('.item.checked');
+    if (allItems.length === 0) return;
+
+    // 섹션 내 최고 레벨 체크 항목 기준으로 달성도 계산
+    let secScore = 0;
+    let secMax = 0;
+    allItems.forEach(el => {
+      const lv = LEVEL_VAL[el.getAttribute('data-level')] || 2.0;
+      secMax += lv;
+    });
+    checkedItems.forEach(el => {
+      const lv = LEVEL_VAL[el.getAttribute('data-level')] || 2.0;
+      secScore += lv;
+    });
+
+    const ratio = secMax > 0 ? secScore / secMax : 0;
+    const w = SEC_WEIGHT[i] || 0.14;
+    weightedScore += ratio * w;
+    totalWeight += w;
+  });
+
+  // 0~1 사이 정규화된 가중 달성률
+  const normScore = totalWeight > 0 ? weightedScore / totalWeight : 0;
+
+  // 0.25 단위 레벨 산출 테이블 (임계값, 레벨값, 클래스, 이모지, 이름)
+  const TABLE = [
+    {th:0.08,  g:'2.0',  cls:'level-2',   e:'🌱', n:'완전 입문자',
+     d:'피클볼의 세계에 첫발을 내딛은 단계입니다. 규칙을 배우고 공을 코트에 넣는 것이 목표입니다.',
+     nx:['기본 규칙(서브, 키친, 두 번 바운드)을 완벽히 익히기','포핸드로 공을 코트 안에 일관되게 넣는 연습','벽 치기로 패들 타점 감각 익히기']},
+    {th:0.16,  g:'2.25', cls:'level-225', e:'🌱', n:'입문자 (하)',
+     d:'기본 규칙은 이해했지만 샷 안정성을 쌓아가는 단계입니다. 공을 코트에 넣는 것에 집중하세요.',
+     nx:['포핸드 일관성 훈련 — 코트 안 10구 연속 목표','서브 방향 이해 및 반복 연습','파트너와 가벼운 랠리 이어가기']},
+    {th:0.24,  g:'2.5',  cls:'level-25',  e:'🌿', n:'초보 입문자',
+     d:'기본 규칙을 이해하고 랠리를 조금씩 이어갈 수 있는 단계입니다. 공을 받고 넣는 데 집중하는 시기입니다.',
+     nx:['서브 안정화 — 5회 중 4회 이상 인바운드 목표','딩크 개념 익히고 키친 앞 소프트 샷 연습','No-Man\'s Land 피하고 키친 라인으로 전진하는 습관 기르기']},
+    {th:0.33,  g:'2.75', cls:'level-275', e:'🌿', n:'초보자 (상)',
+     d:'서브와 기본 랠리가 안정되기 시작한 단계입니다. 딩크와 포지셔닝 의식이 생기고 있습니다.',
+     nx:['딩크 10구 연속 랠리 유지 연습','키친 라인 전진 습관 강화','백핸드 샷 안정화 시작']},
+    {th:0.42,  g:'3.0',  cls:'level-3',   e:'🎯', n:'초급자',
+     d:'포핸드가 안정되기 시작하고, 딩크와 기본 포지셔닝을 배우는 중요한 단계입니다.',
+     nx:['백핸드 드라이브 안정화','서드샷 드롭(Third Shot Drop) 집중 연습','딩크 10회 이상 연속 랠리 유지 훈련']},
+    {th:0.50,  g:'3.25', cls:'level-325', e:'🎯', n:'초급자 (상)',
+     d:'기본 기술이 자리 잡히고 서드샷 드롭을 배우기 시작한 단계입니다. 경기 흐름 읽기가 시작됩니다.',
+     nx:['서드샷 드롭 성공률 40% 이상 목표','리셋(Reset) 개념 이해 및 첫 연습','파트너와 간단한 2인 드릴 시작']},
+    {th:0.58,  g:'3.5',  cls:'level-35',  e:'🏃', n:'초중급자',
+     d:'서드샷 드롭을 시도하고 기본 전술을 이해하기 시작한 단계입니다. 경기에서 의도적인 플레이가 나오기 시작합니다.',
+     nx:['서드샷 드롭 성공률 70% 이상으로 높이기','리셋(Reset) 기술 집중 연습','딩크 중 스피드업 타이밍 파악하기']},
+    {th:0.65,  g:'3.75', cls:'level-375', e:'🏃', n:'초중급자 (상)',
+     d:'전술 의식이 생기고 리셋과 스피드업 판단이 시작된 단계입니다. 중급으로 가는 관문에 있습니다.',
+     nx:['딩크 앵글 다양화 — 크로스 vs 스트레이트 구분','발리 방향 조절 연습 시작','상대 약점 파악하고 공략하는 습관 기르기']},
+    {th:0.73,  g:'4.0',  cls:'level-4',   e:'⚡', n:'중급자',
+     d:'대부분의 샷을 구사하고 전술적 사고가 생기는 단계입니다. 경기 중 의도적인 플레이가 일관되게 나옵니다.',
+     nx:['탑스핀 드라이브 정확도 향상','발리 방향 조절 정밀도 높이기','파트너와 더블스 전술 다양화']},
+    {th:0.80,  g:'4.25', cls:'level-425', e:'⚡', n:'중급자 (상)',
+     d:'중급 기술이 완성되고 상급 기술을 배우기 시작한 단계입니다. 백핸드 안정성이 올라가고 있습니다.',
+     nx:['백핸드 드라이브·딩크 포핸드 수준으로 끌어올리기','스피드업 타이밍과 방향 정밀화','로브 전술 구사 시작']},
+    {th:0.87,  g:'4.5',  cls:'level-45',  e:'🔥', n:'중상급자',
+     d:'거의 모든 샷을 구사하며 경기를 주도적으로 운영하는 단계입니다. 토너먼트 참가를 고려해볼 만한 수준입니다.',
+     nx:['고급 샷(어니, ATP) 안정화','상대 패턴 분석 능력 향상','아마추어 토너먼트 참가 도전']},
+    {th:0.94,  g:'4.75', cls:'level-475', e:'🔥', n:'중상급자 (상)',
+     d:'토너먼트 경험이 있고 상위 아마추어 수준에 근접한 단계입니다. 세부 기술 완성이 목표입니다.',
+     nx:['어니·ATP 실전 성공률 높이기','DUPR 레이팅 등록 및 관리','상위 아마추어 리그 또는 오픈 토너먼트 참가']},
+    {th:1.01,  g:'5.0+', cls:'level-5',   e:'🏆', n:'고급~프로 수준',
+     d:'피클볼의 거의 모든 기술을 완성한 단계입니다. 프로 투어 혹은 상위 아마추어 토너먼트에서도 경쟁력이 있습니다.',
+     nx:['프로 코치와 함께 세부 기술 완성','DUPR 레이팅 등록 및 관리','PPA 아마추어 투어 또는 상위 리그 참가']},
+  ];
+
+  for (const row of TABLE) {
+    if (normScore < row.th) return row;
+  }
+  return TABLE[TABLE.length - 1];
 }
 
 function showResult() {
@@ -328,101 +411,143 @@ function showResult() {
   const total = items.length;
   const count = checked.length;
 
-  // Level score
-  const levelMap = {'2':1,'25':2,'3':3,'35':4,'4':5,'45':6,'5':7};
-  let score = 0;
-  let maxScore = 0;
-  checked.forEach(el => {
-    const lv = el.getAttribute('data-level');
-    score += levelMap[lv] || 1;
-  });
-  items.forEach(el => {
-    const lv = el.getAttribute('data-level');
-    maxScore += levelMap[lv] || 1;
-  });
-
-  const pct = score / maxScore;
-
-  let level, grade, name, desc, cls, emoji, next;
-  if (pct < 0.12) {
-    level='USAPA 등급'; grade='2.0'; name='완전 입문자'; cls='level-2'; emoji='🌱';
-    desc='피클볼의 세계에 첫발을 내딛은 단계입니다. 규칙을 배우고 공을 코트에 넣는 것이 목표입니다.';
-    next=['기본 규칙(서브, 키친, 두 번 바운드)을 완벽히 익히기','포핸드로 공을 코트 안에 일관되게 넣는 연습','벽 치기로 패들 타점 감각 익히기'];
-  } else if (pct < 0.22) {
-    level='USAPA 등급'; grade='2.5'; name='초보 입문자'; cls='level-25'; emoji='🌿';
-    desc='기본 규칙을 이해하고 랠리를 조금씩 이어갈 수 있는 단계입니다. 아직 포지셔닝이나 전술보다는 공을 받고 넣는 데 집중하는 시기입니다.';
-    next=['서브 안정화 — 5회 중 4회 이상 인바운드 목표','딩크 개념 익히고 키친 앞 소프트 샷 연습','No-Man\'s Land 피하고 키친 라인으로 전진하는 습관 기르기'];
-  } else if (pct < 0.38) {
-    level='USAPA 등급'; grade='3.0'; name='초급자'; cls='level-3'; emoji='🎯';
-    desc='포핸드가 안정되기 시작하고, 딩크와 기본 포지셔닝을 배우는 중요한 단계입니다. 이 시기의 훈련이 실력 성장의 기반이 됩니다.';
-    next=['백핸드 드라이브 안정화','서드샷 드롭(Third Shot Drop) 집중 연습','딩크 10회 이상 연속 랠리 유지 훈련'];
-  } else if (pct < 0.54) {
-    level='USAPA 등급'; grade='3.5'; name='초중급자'; cls='level-35'; emoji='🏃';
-    desc='서드샷 드롭을 시도하고, 기본 전술을 이해하기 시작한 단계입니다. 경기에서 의도적인 플레이가 나오기 시작합니다.';
-    next=['서드샷 드롭 성공률 70% 이상으로 높이기','리셋(Reset) 기술 집중 연습','딩크 중 스피드업 타이밍 파악하기'];
-  } else if (pct < 0.68) {
-    level='USAPA 등급'; grade='4.0'; name='중급자'; cls='level-4'; emoji='⚡';
-    desc='대부분의 샷을 구사하고 전술적 사고가 생기는 단계입니다. 경기 중 의도적인 플레이가 일관되게 나옵니다.';
-    next=['탑스핀 드라이브 정확도 향상','발리 방향 조절 정밀도 높이기','파트너와 더블스 전술 다양화'];
-  } else if (pct < 0.82) {
-    level='USAPA 등급'; grade='4.5'; name='중상급자'; cls='level-45'; emoji='🔥';
-    desc='거의 모든 샷을 구사하며 경기를 주도적으로 운영하는 단계입니다. 토너먼트 참가를 고려해볼 만한 수준입니다.';
-    next=['고급 샷(어니, ATP) 안정화','상대 패턴 분석 능력 향상','아마추어 토너먼트 참가 도전'];
-  } else {
-    level='USAPA 등급'; grade='5.0+'; name='고급~프로 수준'; cls='level-5'; emoji='🏆';
-    desc='피클볼의 거의 모든 기술을 완성한 단계입니다. 프로 투어 혹은 상위 아마추어 토너먼트에서도 경쟁력이 있습니다.';
-    next=['프로 코치와 함께 세부 기술 완성','DUPR 레이팅 등록 및 관리','PPA 아마추어 투어 또는 상위 리그 참가'];
-  }
+  const result = calcLevel();
 
   // Set result card
   const card = document.getElementById('resultCard');
-  card.className = 'result-card ' + cls;
-  card.setAttribute('data-emoji', emoji);
-  document.getElementById('resultLevel').textContent = level;
-  document.getElementById('resultGrade').textContent = grade;
-  document.getElementById('resultName').textContent = name;
-  document.getElementById('resultDesc').textContent = desc;
+  card.className = 'result-card ' + result.cls;
+  card.setAttribute('data-emoji', result.e);
+  document.getElementById('resultLevel').textContent = 'USAPA 등급';
+  document.getElementById('resultGrade').textContent = result.g;
+  document.getElementById('resultName').textContent = result.n;
+  document.getElementById('resultDesc').textContent = result.d;
   document.getElementById('resultScore').textContent = count + '개 항목 해당 (전체 ' + total + '개 중)';
 
   // Section bars
   const secs = document.querySelectorAll('.section');
-  for (let i=0; i<7; i++) {
+  for (let i = 0; i < 7; i++) {
     const sec = secs[i];
     if (!sec) continue;
     const all = sec.querySelectorAll('.item').length;
     const ch = sec.querySelectorAll('.item.checked').length;
-    const p = all > 0 ? Math.round(ch/all*100) : 0;
-    document.getElementById('bar'+(i+1)).style.width = p+'%';
-    document.getElementById('val'+(i+1)).textContent = p+'%';
+    const p = all > 0 ? Math.round(ch / all * 100) : 0;
+    document.getElementById('bar' + (i + 1)).style.width = p + '%';
+    document.getElementById('val' + (i + 1)).textContent = p + '%';
   }
 
   // Next steps
   const ns = document.getElementById('nextSteps');
   ns.innerHTML = '<h4>💪 지금 당장 해야 할 것</h4>' +
-    next.map((t,i)=>`<div class="next-step-item"><div class="next-step-num">${i+1}</div><div>${t}</div></div>`).join('');
+    result.nx.map((t, i) => `<div class="next-step-item"><div class="next-step-num">${i + 1}</div><div>${t}</div></div>`).join('');
 
   // Store for share
-  window._resultGrade = grade;
-  window._resultName = name;
+  window._resultData = result;
   window._checkedCount = count;
   window._total = total;
 
   document.getElementById('mainView').style.display = 'none';
   const rv = document.getElementById('resultView');
   rv.style.display = 'block';
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
-function shareKakao() {
-  const text = `🏓 피클볼 레벨 자가진단 결과\n\n나의 레벨: ${window._resultGrade} (${window._resultName})\n체크 항목: ${window._checkedCount}/${window._total}개\n\n나도 진단해보기 👇`;
-  if (navigator.share) {
-    navigator.share({ title: '피클볼 레벨 자가진단', text: text });
-  } else {
-    navigator.clipboard.writeText(text).then(()=>{
-      showToast('결과가 복사되었습니다! 카카오톡에 붙여넣기 하세요 😊');
-    }).catch(()=>{
-      showToast('카카오톡으로 공유해보세요!');
+// ─── 이미지 공유 ────────────────────────────────────────────────
+async function shareImage() {
+  const btn = document.getElementById('shareImgBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ 이미지 생성 중...';
+
+  try {
+    // 공유용 카드 엘리먼트 동적 생성
+    const r = window._resultData;
+    const shareEl = document.createElement('div');
+    shareEl.style.cssText = `
+      width:360px; padding:32px 28px 28px; font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+      background:linear-gradient(145deg,#0D3D6B 0%,#1A5EA8 100%); border-radius:24px; color:#fff; text-align:center; position:fixed;
+      left:-9999px; top:0;
+    `;
+
+    // 영역별 퍼센트 수집
+    const secs = document.querySelectorAll('.section');
+    const secNames = ['규칙','움직임','기본샷','키친게임','발리','전술','고급기술'];
+    let barsHtml = '';
+    secs.forEach((sec, i) => {
+      const all = sec.querySelectorAll('.item').length;
+      const ch = sec.querySelectorAll('.item.checked').length;
+      const p = all > 0 ? Math.round(ch / all * 100) : 0;
+      barsHtml += `
+        <div style="display:flex;align-items:center;gap:8px;margin:5px 0;font-size:11px;">
+          <span style="width:52px;text-align:right;opacity:.8">${secNames[i]}</span>
+          <div style="flex:1;height:5px;background:rgba(255,255,255,.2);border-radius:99px;overflow:hidden">
+            <div style="height:5px;width:${p}%;background:rgba(255,255,255,.85);border-radius:99px"></div>
+          </div>
+          <span style="width:28px;font-weight:600">${p}%</span>
+        </div>`;
     });
+
+    shareEl.innerHTML = `
+      <div style="font-size:48px;margin-bottom:8px">${r.e}</div>
+      <div style="font-size:11px;opacity:.75;letter-spacing:.1em;margin-bottom:4px">USAPA 등급</div>
+      <div style="font-size:42px;font-weight:800;margin-bottom:2px">${r.g}</div>
+      <div style="font-size:17px;font-weight:700;margin-bottom:16px">${r.n}</div>
+      <div style="background:rgba(255,255,255,.12);border-radius:14px;padding:16px;margin-bottom:16px;text-align:left">
+        <div style="font-size:11px;font-weight:700;opacity:.75;margin-bottom:10px;letter-spacing:.05em">📊 영역별 달성도</div>
+        ${barsHtml}
+      </div>
+      <div style="font-size:11px;opacity:.65">${window._checkedCount}개 항목 해당 / 전체 ${window._total}개</div>
+      <div style="margin-top:14px;font-size:11px;opacity:.5">🏓 사이공 피클볼 모임 · keikim8753.github.io/pickle</div>
+    `;
+
+    document.body.appendChild(shareEl);
+
+    const canvas = await html2canvas(shareEl, {
+      scale: 2.5,
+      backgroundColor: null,
+      useCORS: true,
+      logging: false,
+    });
+
+    document.body.removeChild(shareEl);
+
+    canvas.toBlob(async (blob) => {
+      const file = new File([blob], 'pickleball-level.png', { type: 'image/png' });
+
+      // Web Share API (모바일 우선)
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: `🏓 내 피클볼 레벨: ${r.g} ${r.n}`,
+          text: `사이공 피클볼 모임 레벨 자가진단 결과\n레벨 ${r.g} — ${r.n}`,
+        });
+        showToast('공유 완료! 🎉');
+      } else {
+        // 데스크톱: 이미지 다운로드
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `pickleball-level-${r.g}.png`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('이미지가 저장되었습니다! 📸');
+      }
+
+      btn.disabled = false;
+      btn.textContent = '📸 이미지로 저장 / 공유하기';
+    }, 'image/png');
+
+  } catch (e) {
+    console.error(e);
+    // 폴백: 텍스트 복사
+    const r = window._resultData;
+    const text = `🏓 피클볼 레벨 자가진단 결과\n\n레벨: ${r.g} (${r.n})\n체크: ${window._checkedCount}/${window._total}개\n\nhttps://keikim8753.github.io/pickle/level-check.html`;
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('결과 텍스트가 복사되었습니다! 붙여넣기 해보세요 😊');
+    } catch {
+      showToast('이미지 저장을 다시 시도해보세요');
+    }
+    btn.disabled = false;
+    btn.textContent = '📸 이미지로 저장 / 공유하기';
   }
 }
 
@@ -432,14 +557,14 @@ function retry() {
   updateProgress();
   document.getElementById('resultView').style.display = 'none';
   document.getElementById('mainView').style.display = 'block';
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2800);
+  setTimeout(() => t.classList.remove('show'), 2800);
 }
 
 updateProgress();

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤝 코트 에티켓 & 모임 매너</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#f0f4fa;color:#1a1a2e;font-size:15px;line-height:1.6;min-height:100vh}
+
+/* COVER */
+.cover{background:linear-gradient(145deg,#0D3D6B 0%,#1A5EA8 60%,#2980c4 100%);color:#fff;padding:40px 24px 36px;text-align:center;position:relative;overflow:hidden}
+.cover::before{content:'🤝';font-size:90px;position:absolute;top:-10px;right:-10px;opacity:.1;transform:rotate(15deg)}
+.cover h1{font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px}
+.cover h2{font-size:14px;font-weight:400;opacity:.85;margin-bottom:20px}
+.cover .tagline{background:rgba(255,255,255,.12);border-radius:12px;padding:12px 16px;font-size:13px;opacity:.95;line-height:1.7}
+
+/* TAB NAV */
+.tab-nav{display:flex;background:#fff;border-bottom:1px solid #e8edf5;overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{flex:none;padding:13px 18px;font-size:13px;font-weight:600;color:#64748b;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .2s}
+.tab-btn.active{color:#0D3D6B;border-bottom-color:#1A5EA8}
+
+/* SECTION */
+.page{display:none}
+.page.active{display:block}
+.section-wrap{padding:16px 16px 0}
+.card{background:#fff;border-radius:16px;margin-bottom:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card-header{padding:14px 18px 12px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:10px}
+.card-icon{font-size:22px}
+.card-title{font-size:15px;font-weight:700;color:#0D3D6B}
+.card-sub{font-size:12px;color:#64748b;margin-top:2px}
+
+/* RULE ITEM */
+.rule{padding:14px 18px;border-bottom:1px solid #f8fafc;display:flex;gap:12px;align-items:flex-start}
+.rule:last-child{border-bottom:none}
+.rule-dot{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px}
+.dot-green{background:#E6F4ED;color:#1A7A4A}
+.dot-red{background:#FEE2E2;color:#B91C1C}
+.dot-blue{background:#EBF4FC;color:#1A5EA8}
+.dot-yellow{background:#FFF9E6;color:#B45309}
+.rule-body{}
+.rule-title{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:3px}
+.rule-desc{font-size:13px;color:#334155;line-height:1.6}
+.rule-tip{font-size:12px;color:#64748b;margin-top:5px;padding:6px 10px;background:#f8fafc;border-radius:8px;line-height:1.55}
+.rule-tip b{color:#0D3D6B}
+
+/* DO / DON'T BADGE */
+.badge-do{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;background:#E6F4ED;color:#1A7A4A;margin-bottom:5px}
+.badge-dont{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;background:#FEE2E2;color:#B91C1C;margin-bottom:5px}
+
+/* CALLOUT */
+.callout{background:#EBF4FC;border-left:4px solid #1A5EA8;border-radius:0 12px 12px 0;padding:12px 16px;margin:0 16px 14px;font-size:13px;color:#0D3D6B;line-height:1.65}
+.callout-warn{background:#FFF9E6;border-left-color:#D97706;color:#92400e}
+.callout b{font-weight:700}
+
+/* SCENARIO */
+.scenario{padding:14px 18px;border-bottom:1px solid #f8fafc}
+.scenario:last-child{border-bottom:none}
+.scenario-q{font-size:13px;font-weight:700;color:#0D3D6B;margin-bottom:6px;display:flex;gap:6px}
+.scenario-a{font-size:13px;color:#334155;line-height:1.6;padding-left:22px}
+
+/* FOOTER */
+.spacer{height:32px}
+.footer{text-align:center;padding:28px 20px 36px;color:#94a3b8;font-size:12px;line-height:1.9}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <h1>🤝 코트 에티켓 & 모임 매너</h1>
+  <h2>사이공 피클볼 모임 가이드</h2>
+  <div class="tagline">처음 오는 분도 편안하게, 모두가 즐겁게 치기 위한 약속들</div>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showPage(0)">🎾 코트 기본</button>
+  <button class="tab-btn" onclick="showPage(1)">🔄 게임 로테이션</button>
+  <button class="tab-btn" onclick="showPage(2)">📣 점수 & 콜</button>
+  <button class="tab-btn" onclick="showPage(3)">💬 소통 매너</button>
+  <button class="tab-btn" onclick="showPage(4)">❓ 자주 묻는 것</button>
+</nav>
+
+<!-- PAGE 0: 코트 기본 에티켓 -->
+<div class="page active" id="page0">
+  <div class="section-wrap">
+
+    <div class="callout" style="margin-top:14px">
+      <b>피클볼 에티켓의 핵심</b><br>
+      실수해도 괜찮아요. 중요한 건 서로에 대한 배려와 게임을 즐기는 태도입니다. 모르는 건 언제든지 물어보세요!
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🚪</span>
+        <div>
+          <div class="card-title">코트 입장 & 준비</div>
+          <div class="card-sub">게임 시작 전 기본 매너</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">다른 코트 게임 중엔 뒤로 돌아서 들어가기</div>
+          <div class="rule-desc">옆 코트에서 게임이 진행 중일 때 앞을 가로질러 입장하지 마세요. 공이 롤링되어 올 때도 랠리가 끝난 후 잠깐 기다렸다가 줍습니다.</div>
+          <div class="rule-tip"><b>이유:</b> 움직이는 사람이 집중을 끊고 사고로 이어질 수 있어요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">게임 시작 전 간단한 인사</div>
+          <div class="rule-desc">새로 만나는 파트너나 상대에게 간단히 이름 소개를 해주세요. "처음 오셨나요?" 한마디가 분위기를 훨씬 부드럽게 만들어줍니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-blue">ℹ</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">워밍업은 짧게, 서로 배려하며</div>
+          <div class="rule-desc">게임 전 드라이브 랠리나 딩크 워밍업은 5분 내외로 하고, 상대방도 준비되었는지 확인 후 시작하세요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-red">✗</div>
+        <div class="rule-body">
+          <span class="badge-dont">DON'T</span>
+          <div class="rule-title">코트 위에서 휴대폰 통화하지 않기</div>
+          <div class="rule-desc">게임 중 또는 대기 중에 코트 안에서 긴 통화는 삼가주세요. 급한 경우라면 코트 밖으로 나가서 받으세요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">👟</span>
+        <div>
+          <div class="card-title">장비 & 복장</div>
+          <div class="card-sub">코트와 다른 플레이어를 위한 배려</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">실내 코트엔 실내 전용 신발</div>
+          <div class="rule-desc">실내 코트에서는 바깥에서 신던 신발로 들어가지 마세요. 코트 바닥을 더럽히고 다른 플레이어의 미끄럼 사고를 유발할 수 있습니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">여분의 공 챙겨오기</div>
+          <div class="rule-desc">공은 소모품입니다. 가능하면 공 1~2개를 갖고 오는 게 매너입니다. 항상 누군가가 챙겨주길 기대하지 마세요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-blue">ℹ</div>
+        <div class="rule-body">
+          <span class="badge-do">TIP</span>
+          <div class="rule-title">패들 빌리기 & 빌려주기</div>
+          <div class="rule-desc">처음 오신 분은 패들을 빌려드릴 수 있어요. 단, 빌린 패들은 조심히 다루고 게임 후 바로 돌려주세요. 패들은 개인 장비라 소중하게 다뤄야 합니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🏁</span>
+        <div>
+          <div class="card-title">게임 종료 매너</div>
+          <div class="card-sub">경기 후 마무리</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">게임 후 네트 앞에서 인사</div>
+          <div class="rule-desc">경기가 끝나면 네트 앞에서 상대방과 파트너에게 패들을 살짝 탭하며 인사하는 게 관례입니다("Good game!"). 승패와 상관없이 즐거운 마무리를 해주세요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">공은 다음 팀에게 넘기기</div>
+          <div class="rule-desc">게임이 끝나면 공을 네트 쪽으로 보내거나 다음 게임을 할 팀에게 넘겨주세요. 공을 들고 나가지 않도록 합니다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- PAGE 1: 게임 로테이션 -->
+<div class="page" id="page1">
+  <div class="section-wrap">
+
+    <div class="callout" style="margin-top:14px">
+      <b>우리 모임의 기본 로테이션 방식</b><br>
+      코트 수와 참여 인원에 따라 유동적으로 운영합니다. 모르면 그날 코디네이터에게 물어보세요!
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🔄</span>
+        <div>
+          <div class="card-title">기본 로테이션 룰</div>
+          <div class="card-sub">공평하게 게임 기회 나누기</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-blue">1</div>
+        <div class="rule-body">
+          <div class="rule-title">이긴 팀은 나뉘어 대기자와 새 팀 구성</div>
+          <div class="rule-desc">11점 게임 기준, 이긴 팀은 둘이 함께 코트에 남지 않습니다. 둘이 나뉘어 대기 중인 두 명과 각각 팀을 이뤄 다음 게임을 합니다.</div>
+          <div class="rule-tip">이유: 강한 조가 계속 코트를 독점하는 걸 방지하고, 다양한 파트너와 게임할 수 있어요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-blue">2</div>
+        <div class="rule-body">
+          <div class="rule-title">진 팀은 코트 아웃, 대기석으로</div>
+          <div class="rule-desc">진 팀 두 명은 코트에서 나와 대기석으로 이동합니다. 다음 로테이션을 기다리면 됩니다. 보통 한 게임은 10~15분 내외입니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-blue">3</div>
+        <div class="rule-body">
+          <div class="rule-title">인원이 많을 때: 오픈 코트 방식</div>
+          <div class="rule-desc">참여자가 8명 이상이면 대기자가 생깁니다. 도착 순서대로 대기 줄을 서고, 코트가 비는 순간 앞에서부터 들어갑니다. 오래 기다린 분이 우선입니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">파트너 고르기보다 랜덤 팀 우선</div>
+          <div class="rule-desc">모임 초반에는 친한 사람끼리만 파트너를 하기보다 랜덤으로 팀을 이루는 걸 권장합니다. 레벨이 섞이면서 서로 배울 수 있는 게 모임의 장점이니까요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-red">✗</div>
+        <div class="rule-body">
+          <span class="badge-dont">DON'T</span>
+          <div class="rule-title">코트에서 지나치게 오래 점유하지 않기</div>
+          <div class="rule-desc">대기자가 있는데 같은 조끼리 "한 판만 더"를 반복하거나, 게임 끝나고도 코트에 머물며 연습만 하는 건 민폐입니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">⚖️</span>
+        <div>
+          <div class="card-title">레벨 믹스 & 배려</div>
+          <div class="card-sub">다양한 실력이 섞일 때의 매너</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">초보자에게 게임 템포 맞춰주기</div>
+          <div class="rule-desc">초보자와 같은 코트에 있을 때는 강한 드라이브보다 랠리가 이어지는 게임을 해주세요. 이기는 것보다 함께 즐기는 게 우리 모임의 목표입니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">초보자는 솔직하게 레벨 알리기</div>
+          <div class="rule-desc">처음 오셨거나 초보자라면 미리 말해주세요. 부끄럽지 않아요! 오히려 말해줘야 파트너와 상대가 적절히 배려할 수 있습니다.</div>
+          <div class="rule-tip">"저 시작한 지 얼마 안 됐어요" 한마디가 게임을 훨씬 즐겁게 만들어줍니다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- PAGE 2: 점수 & 콜 -->
+<div class="page" id="page2">
+  <div class="section-wrap">
+
+    <div class="callout" style="margin-top:14px">
+      <b>점수 콜은 서브팀이 책임집니다</b><br>
+      서브 전 매번 점수를 크고 명확하게 부르는 게 기본입니다. 상대가 못 들었다면 다시 불러줘요.
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">📣</span>
+        <div>
+          <div class="card-title">점수 콜 기본</div>
+          <div class="card-sub">서브 전 반드시 해야 하는 것</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-blue">ℹ</div>
+        <div class="rule-body">
+          <div class="rule-title">서브 전 "서브팀 점수 – 상대팀 점수 – 서버번호" 콜</div>
+          <div class="rule-desc">예: "4 – 2 – 1" (내 팀 4점, 상대 2점, 내가 1번 서버)<br>게임 첫 서브는 항상 "0 – 0 – 2"로 시작합니다. (2번 서버부터 시작하는 룰)</div>
+          <div class="rule-tip"><b>왜 2로 시작하냐고요?</b> 첫 서브 팀이 유리하지 않도록 처음엔 서버 교체 기회를 한 번만 주는 룰입니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">점수가 헷갈리면 바로 물어보기</div>
+          <div class="rule-desc">점수가 기억나지 않으면 랠리 끝나고 바로 확인하세요. "지금 몇 대 몇이에요?" 는 언제든 물어봐도 됩니다. 게임 중간에 확인하는 게 나중에 분쟁을 막아줍니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-red">✗</div>
+        <div class="rule-body">
+          <span class="badge-dont">DON'T</span>
+          <div class="rule-title">점수 콜 없이 서브하지 않기</div>
+          <div class="rule-desc">점수를 부르지 않고 서브하면 상대방이 준비가 안 된 상태일 수 있습니다. 특히 초보자 포함 게임에서는 더 천천히, 명확하게 콜하세요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🎯</span>
+        <div>
+          <div class="card-title">인/아웃 & 폴트 판정</div>
+          <div class="card-sub">공정하게, 솔직하게</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">내 쪽 공은 내가 콜한다</div>
+          <div class="rule-desc">자기 코트 쪽에 떨어진 공의 인/아웃은 내가 판정합니다. 상대방이 "아웃"을 외치면 자기 쪽 공에 대한 콜입니다. 서로의 판정을 기본적으로 신뢰하세요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">애매하면 "인" 처리가 기본</div>
+          <div class="rule-desc">라인에 걸쳤는지 확실하지 않을 때는 상대방에게 유리하게 "인"으로 처리하는 게 스포츠맨십입니다. 모임에서 판정 싸움은 분위기를 망칩니다.</div>
+          <div class="rule-tip"><b>기억하세요:</b> 라인에 걸치면 인(IN)입니다. 단, 키친 라인은 서브 시 예외!</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-red">✗</div>
+        <div class="rule-body">
+          <span class="badge-dont">DON'T</span>
+          <div class="rule-title">판정으로 오래 논쟁하지 않기</div>
+          <div class="rule-desc">판정이 애매해서 의견이 갈리면 "렛(Let) — 다시!"로 처리하고 서브를 다시 합니다. 길게 논쟁하는 건 모두의 즐거움을 깎습니다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- PAGE 3: 소통 매너 -->
+<div class="page" id="page3">
+  <div class="section-wrap">
+
+    <div class="callout" style="margin-top:14px">
+      <b>코트에서 말 한마디가 분위기를 만듭니다</b><br>
+      격려의 한마디, 배려의 한마디가 모임을 더 즐겁게 만들어요.
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🗣️</span>
+        <div>
+          <div class="card-title">파트너와의 소통</div>
+          <div class="card-sub">팀플레이를 위한 기본</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">"내가 간다 (Mine!)" / "네 꺼 (Yours!)" 콜하기</div>
+          <div class="rule-desc">파트너와 공이 겹칠 때 명확하게 콜해주세요. 둘 다 가거나 둘 다 비키면 아무도 못 칩니다. 특히 중앙으로 오는 공은 꼭 콜을 해야 합니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">파트너 실수에 격려로 반응하기</div>
+          <div class="rule-desc">"괜찮아요!", "다음에!", "Good try!" — 파트너가 실수했을 때 이런 말 한마디가 분위기를 살립니다. 한숨, 고개를 젓는 행동, 침묵은 파트너를 위축시킵니다.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-red">✗</div>
+        <div class="rule-body">
+          <span class="badge-dont">DON'T</span>
+          <div class="rule-title">게임 중 파트너에게 과한 코칭하지 않기</div>
+          <div class="rule-desc">게임 중 파트너에게 "그렇게 치면 안 돼요", "왜 거기 서 있어요" 같은 지적은 자제해주세요. 코칭은 게임이 끝난 후, 상대방이 원할 때만 하세요.</div>
+          <div class="rule-tip">상대방이 먼저 "어떻게 하면 나아질까요?" 라고 물어볼 때 답해주는 게 가장 좋습니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🤜</span>
+        <div>
+          <div class="card-title">상대팀과의 소통</div>
+          <div class="card-sub">경쟁보다 함께 즐기기</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-green">✓</div>
+        <div class="rule-body">
+          <span class="badge-do">DO</span>
+          <div class="rule-title">멋진 샷에는 칭찬을 ("Nice shot!")</div>
+          <div class="rule-desc">상대가 멋진 플레이를 했을 때 "나이스 샷!" 한마디는 피클볼 커뮤니티의 대표 문화입니다. 지더라도 좋은 플레이는 인정해주세요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-red">✗</div>
+        <div class="rule-body">
+          <span class="badge-dont">DON'T</span>
+          <div class="rule-title">볼 공격 전 "쏘리 (Sorry)!" 남발하지 않기</div>
+          <div class="rule-desc">상대 몸쪽을 노리는 바디백이나 강한 공격은 정당한 전술입니다. 칠 때마다 "쏘리"를 외치면 오히려 어색해집니다. 단, 실제로 상대가 다쳤다면 바로 확인해주세요.</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-dot dot-red">✗</div>
+        <div class="rule-body">
+          <span class="badge-dont">DON'T</span>
+          <div class="rule-title">큰 소리로 불만 표출하지 않기</div>
+          <div class="rule-desc">판정이 불만스럽거나 자기 실수에 패들을 내팽개치거나 욕을 하는 행동은 삼가주세요. 모임 분위기에 영향을 주고, 초보자가 위축될 수 있습니다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- PAGE 4: 자주 묻는 것 -->
+<div class="page" id="page4">
+  <div class="section-wrap">
+
+    <div class="callout" style="margin-top:14px">
+      처음 오시는 분들이 가장 많이 헷갈려하는 상황들을 모았습니다.
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">❓</span>
+        <div>
+          <div class="card-title">이럴 땐 어떻게 하나요?</div>
+          <div class="card-sub">실전 상황별 가이드</div>
+        </div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-q">🙋 공이 옆 코트로 굴러갔을 때</div>
+        <div class="scenario-a">큰 소리로 "볼!" 또는 "볼 플리즈!"를 외쳐주세요. 그 코트 게임이 멈추면 공을 가져오거나 굴려서 돌려줍니다. 직접 코트 안으로 들어갈 때는 랠리가 멈춘 걸 확인한 후에!</div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-q">🙋 상대가 서브를 자꾸 폴트 내는데 지적해야 하나요?</div>
+        <div class="scenario-a">공식 경기가 아니라면 부드럽게 한 번 정도 알려줄 수 있습니다. "서브가 키친에 들어간 것 같아요"처럼요. 반복적으로 지적하거나 상대가 받아들이지 않으면 넘어가는 게 낫습니다. 모임에서는 배움의 기회로 여기는 게 좋아요.</div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-q">🙋 게임 중 다쳤거나 잠깐 멈춰야 할 때</div>
+        <div class="scenario-a">즉시 손을 들고 "타임!" 또는 "잠깐요!"를 외쳐주세요. 다친 경우 게임을 계속 억지로 진행하지 마세요. 안전이 최우선입니다.</div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-q">🙋 실력 차이가 너무 나서 게임이 일방적일 때</div>
+        <div class="scenario-a">상급자는 강한 공격보다 랠리를 길게 이어가는 방향으로 조절해줄 수 있어요. 또는 초보자 쪽에서 먼저 "제 실력에 맞춰서 쳐주세요"라고 부탁해도 됩니다. 눈치 보지 말고 편하게 얘기해주세요.</div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-q">🙋 점수를 잊어버렸어요</div>
+        <div class="scenario-a">바로 파트너나 상대에게 "지금 몇 대 몇이에요?"라고 물어보세요. 아무도 기억 못 하면 가장 기억에 남는 점수로 합의해서 진행하거나, 서브를 상대방이 가진 것으로 하고 계속하면 됩니다.</div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-q">🙋 렛(Let)은 언제 부르나요?</div>
+        <div class="scenario-a">서브한 공이 네트에 맞고 서비스 박스에 들어간 경우 "렛!"을 부르고 서브를 다시 합니다. 또 인/아웃 판정이 양쪽 모두 애매할 때도 "렛, 다시!"로 처리하고 재서브합니다.</div>
+      </div>
+
+      <div class="scenario" style="border-bottom:none">
+        <div class="scenario-q">🙋 처음 오는데 아무것도 몰라요. 어떻게 하면 될까요?</div>
+        <div class="scenario-a">모임 코디네이터에게 먼저 인사하고 "처음 왔어요"라고 말해주세요. 간단한 규칙 설명과 파트너를 연결해드립니다. 처음엔 구경하거나 드릴 파트너와 연습하다가 자신감이 생기면 게임에 합류하면 됩니다. 걱정 마세요, 다들 처음이 있었으니까요! 🙂</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<div class="footer">
+  <a href="index.html" style="display:inline-block;margin-bottom:12px;padding:9px 24px;background:#1A5EA8;color:#fff;border-radius:20px;text-decoration:none;font-size:13px;font-weight:700">🏠 홈으로</a><br>
+  🏓 사이공 피클볼 모임<br>
+  <span style="display:inline-block;margin-top:4px">published by Kei KIM</span>
+</div>
+
+<script>
+function showPage(idx) {
+  document.querySelectorAll('.page').forEach((p, i) => {
+    p.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === idx);
+  });
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
