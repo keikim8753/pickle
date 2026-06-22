@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USAPA 공식 규정집 2026 | 피클볼 완전 정복</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#f0f4fa;color:#1a1a2e;font-size:15px;line-height:1.6}
+
+/* HEADER */
+.cover{background:linear-gradient(145deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);color:#fff;padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden}
+.cover::before{content:'📋';font-size:90px;position:absolute;top:-10px;right:-10px;opacity:.08}
+.cover-back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);font-size:13px;text-decoration:none;margin-bottom:16px}
+.cover-back:hover{color:#fff}
+.cover-badge{display:inline-block;background:rgba(255,255,255,.15);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;margin-bottom:10px}
+.cover h1{font-size:22px;font-weight:800;margin-bottom:4px;letter-spacing:-0.5px}
+.cover h2{font-size:13px;font-weight:400;opacity:.8;margin-bottom:16px}
+.cover-meta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.cover-chip{background:rgba(255,255,255,.12);border-radius:12px;padding:5px 12px;font-size:12px;font-weight:600}
+
+/* CHANGE NOTICE */
+.change-banner{background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;margin:16px 16px 0;border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;max-width:448px;margin-left:auto;margin-right:auto}
+.change-banner-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.change-banner-text{font-size:12px;line-height:1.6}
+.change-banner-title{font-size:13px;font-weight:700;margin-bottom:3px}
+.change-tag{display:inline-block;background:rgba(255,255,255,.25);border-radius:8px;padding:1px 7px;font-size:11px;font-weight:600;margin:2px 2px 2px 0}
+
+/* TABS */
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tab-scroll{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 12px}
+.tab-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:14px 14px 12px;font-size:13px;font-weight:600;color:#64748b;background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;white-space:nowrap;transition:all .2s;margin-bottom:-2px}
+.tab-btn.active{color:#0f3460;border-bottom-color:#0f3460}
+.tab-btn .tab-num{display:inline-block;background:#f1f5f9;color:#94a3b8;border-radius:10px;padding:1px 6px;font-size:10px;font-weight:700;margin-left:4px}
+.tab-btn.active .tab-num{background:#e0e7f5;color:#0f3460}
+
+/* CONTENT */
+.tab-content{display:none;padding:16px 16px 32px;max-width:480px;margin:0 auto}
+.tab-content.active{display:block}
+
+/* SECTION GROUP */
+.sec-group{margin-bottom:14px}
+.sec-header{background:#fff;border-radius:14px 14px 0 0;padding:16px 18px 12px;border-bottom:1px solid #f1f5f9;cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none;-webkit-user-select:none}
+.sec-header:only-child{border-radius:14px;border-bottom:none}
+.sec-num{flex-shrink:0;width:28px;height:28px;border-radius:8px;background:#0f3460;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.sec-title-wrap{flex:1}
+.sec-title{font-size:15px;font-weight:700;color:#0f3460}
+.sec-sub{font-size:11px;color:#94a3b8;margin-top:1px}
+.sec-arrow{color:#cbd5e1;font-size:13px;transition:transform .25s;flex-shrink:0}
+.sec-header.open .sec-arrow{transform:rotate(90deg)}
+.sec-body{background:#fff;border-radius:0 0 14px 14px;overflow:hidden;display:none}
+.sec-body.open{display:block}
+
+/* RULE ITEM */
+.rule-block{padding:14px 18px;border-bottom:1px solid #f8fafc}
+.rule-block:last-child{border-bottom:none}
+.rule-id{font-size:10px;font-weight:700;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
+.rule-text{font-size:13px;color:#334155;line-height:1.7}
+.rule-text strong{color:#0f3460;font-weight:700}
+.rule-note{background:#f8fafc;border-left:3px solid #e2e8f0;border-radius:0 8px 8px 0;padding:8px 12px;margin-top:8px;font-size:12px;color:#64748b;line-height:1.6}
+.rule-note.highlight{background:#eff6ff;border-left-color:#3b82f6;color:#1e40af}
+.rule-note.warn{background:#fff7ed;border-left-color:#f59e0b;color:#92400e}
+.rule-note.danger{background:#fef2f2;border-left-color:#ef4444;color:#991b1b}
+
+/* KEY-VALUE TABLE */
+.kv-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+.kv-table th{background:#f8fafc;color:#0f3460;font-weight:700;padding:7px 10px;text-align:left;border-bottom:1px solid #e2e8f0;font-size:12px}
+.kv-table td{padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#334155;vertical-align:top}
+.kv-table tr:last-child td{border-bottom:none}
+
+/* TAG CHIPS */
+.tag{display:inline-block;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:600;margin:2px 2px 0 0}
+.tag-red{background:#fef2f2;color:#dc2626}
+.tag-blue{background:#eff6ff;color:#2563eb}
+.tag-green{background:#f0fdf4;color:#16a34a}
+.tag-yellow{background:#fffbeb;color:#d97706}
+.tag-gray{background:#f8fafc;color:#475569}
+.tag-purple{background:#faf5ff;color:#7c3aed}
+
+/* PENALTY TABLE */
+.penalty-step{display:flex;gap:10px;padding:10px 18px;border-bottom:1px solid #f8fafc;align-items:flex-start}
+.penalty-step:last-child{border-bottom:none}
+.penalty-circle{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;margin-top:1px}
+.p1{background:#94a3b8}
+.p2{background:#f59e0b}
+.p3{background:#ef4444}
+.p4{background:#7c3aed}
+.penalty-info{flex:1}
+.penalty-name{font-size:13px;font-weight:700;color:#0f3460;margin-bottom:2px}
+.penalty-desc{font-size:12px;color:#64748b;line-height:1.5}
+
+/* BACK-TO-TOP */
+.back-btn{display:block;text-align:center;padding:10px;color:#94a3b8;font-size:12px;cursor:pointer;text-decoration:none}
+.source-box{background:#fff;border-radius:14px;padding:14px 18px;margin:0 0 16px;border:1px solid #e2e8f0;font-size:12px;color:#64748b;display:flex;align-items:center;gap:8px}
+.source-box a{color:#0f3460;font-weight:600}
+
+/* PART INTRO */
+.part-intro{background:#fff;border-radius:14px;padding:16px 18px;margin-bottom:14px;border-left:4px solid #0f3460}
+.part-intro-title{font-size:13px;font-weight:700;color:#0f3460;margin-bottom:4px}
+.part-intro-desc{font-size:12px;color:#64748b;line-height:1.6}
+
+.footer{text-align:center;padding:20px 20px 32px;color:#94a3b8;font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <a class="cover-back" href="index.html">← 홈으로</a>
+  <div class="cover-badge">OFFICIAL RULES</div>
+  <h1>USAPA 공식 피클볼 규정집</h1>
+  <h2>USA Pickleball Official Rulebook</h2>
+  <div class="cover-meta">
+    <span class="cover-chip">📅 2026년판</span>
+    <span class="cover-chip">📖 25개 섹션</span>
+    <span class="cover-chip">🌐 한국어 번역</span>
+  </div>
+</div>
+
+<div class="change-banner">
+  <div class="change-banner-icon">🆕</div>
+  <div class="change-banner-text">
+    <div class="change-banner-title">2026 주요 변경사항</div>
+    <span class="change-tag">랠리 스코어링 공식화</span>
+    <span class="change-tag">심판 어필 제도 신설</span>
+    <span class="change-tag">논-발리 존 정의 명확화</span>
+    <span class="change-tag">적응형·하이브리드 복식 추가</span>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <div class="tab-scroll">
+    <button class="tab-btn active" onclick="showTab('part1',this)">Part I <span class="tab-num">§1–3</span></button>
+    <button class="tab-btn" onclick="showTab('part2',this)">Part II <span class="tab-num">§4–14</span></button>
+    <button class="tab-btn" onclick="showTab('part3',this)">Part III <span class="tab-num">§15–24</span></button>
+    <button class="tab-btn" onclick="showTab('part4',this)">Part IV <span class="tab-num">§25</span></button>
+  </div>
+</div>
+
+<!-- ===================== PART I ===================== -->
+<div id="part1" class="tab-content active">
+  <div class="part-intro">
+    <div class="part-intro-title">Part I — 피클볼 입문 (Introduction to Pickleball)</div>
+    <div class="part-intro-desc">게임의 기본 개념, 핵심 용어 정의, 코트와 장비 규격을 다룹니다. 피클볼을 처음 접하거나 규정의 기초를 이해하려는 분에게 필수적인 파트입니다.</div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="sec-group">
+    <div class="sec-header open" onclick="toggleSec(this)">
+      <div class="sec-num">1</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">게임 (The Game)</div>
+        <div class="sec-sub">피클볼의 기본 개요</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body open">
+      <div class="rule-block">
+        <div class="rule-id">1.A 개요</div>
+        <div class="rule-text">피클볼은 배드민턴 코트 크기의 경기장에서 단단한 패들과 구멍 뚫린 공(퍼포레이션 볼)을 사용하는 패들 스포츠입니다. 배드민턴·탁구·테니스의 요소를 결합한 게임으로, 단식(싱글) 또는 복식(더블)로 플레이합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">1.B 코트 크기</div>
+        <div class="rule-text">코트는 <strong>20피트(6.1m) × 44피트(13.4m)</strong>이며 단식과 복식 모두 동일한 코트를 사용합니다. 네트 양쪽으로 각 <strong>7피트(2.1m)의 논-발리 존(키친)</strong>이 있습니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">1.C 득점 방식</div>
+        <div class="rule-text"><strong>기본 득점(사이드아웃 스코어링):</strong> 서브 팀이 랠리를 이겼을 때만 점수가 부여됩니다. 기본 게임은 <strong>11점 선취, 반드시 2점 차</strong>로 승리해야 합니다.</div>
+        <div class="rule-note highlight">랠리 스코어링(Rally Scoring)은 2026년부터 공식 잠정 옵션으로 승인되었습니다 — Section 14.A 참조</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">1.D 핵심 특징</div>
+        <div class="rule-text">피클볼만의 고유한 규칙 세 가지:</div>
+        <table class="kv-table" style="margin-top:8px">
+          <tr><th>규칙</th><th>내용</th></tr>
+          <tr><td><strong>투-바운스 룰</strong></td><td>서브 후 서버 팀과 리시버 팀이 각각 반드시 1회 바운스 후 반환해야 합니다</td></tr>
+          <tr><td><strong>논-발리 존</strong></td><td>네트 양쪽 7피트 구역에서는 발리(바운스 없이 공격)가 금지됩니다</td></tr>
+          <tr><td><strong>휠체어 2바운스</strong></td><td>휠체어 선수는 공이 2회 바운스되는 것이 허용됩니다</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">2</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">용어 정의 (Definitions)</div>
+        <div class="sec-sub">공식 피클볼 용어 해설</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">주요 공식 용어</div>
+        <table class="kv-table">
+          <tr><th>용어</th><th>정의</th></tr>
+          <tr><td><strong>인 플레이 (Ball in Play)</strong></td><td>스코어 콜이 시작된 순간부터 데드볼까지 진행 중인 상태</td></tr>
+          <tr><td><strong>데드볼 (Dead Ball)</strong></td><td>폴트, 힌더, 인-아웃 판정 등으로 랠리가 공식 종료된 상태</td></tr>
+          <tr><td><strong>폴트 (Fault)</strong></td><td>규칙 위반으로 랠리를 종료시키는 행위 — 위반 팀이 서브 팀이면 사이드아웃, 리시브 팀이면 서브 팀 득점</td></tr>
+          <tr><td><strong>힌더 (Hinder)</strong></td><td>경기 외적 요소(다른 코트 볼, 관중 방해 등)에 의한 방해 — 누구든 콜 가능, 리플레이</td></tr>
+          <tr><td><strong>라이브 볼 (Live Ball)</strong></td><td>스코어 콜 시작부터 데드볼까지의 상태 (= Ball in Play)</td></tr>
+          <tr><td><strong>논-발리 존 (Non-Volley Zone)</strong></td><td>네트에서 양쪽으로 7피트 구역 + 라인 포함 (2차원 평면, 공중 확장 없음)</td></tr>
+          <tr><td><strong>네트 평면 (Plane of the Net)</strong></td><td>네트의 수직 연장 평면 — 이 평면을 공 없이 통과하면 폴트</td></tr>
+          <tr><td><strong>랠리 (Rally)</strong></td><td>서브부터 데드볼까지 연속으로 진행되는 플레이</td></tr>
+          <tr><td><strong>사이드아웃 (Side Out)</strong></td><td>서브권이 상대 팀으로 넘어가는 것</td></tr>
+          <tr><td><strong>발리 (Volley)</strong></td><td>바운스 없이 공중에서 공을 타격하는 것</td></tr>
+          <tr><td><strong>모멘텀 (Momentum)</strong></td><td>발리 동작 후 선수가 계속 이동하는 관성 — 발리 후 논-발리 존에 닿으면 폴트</td></tr>
+          <tr><td><strong>테크니컬 파울 (Technical Foul)</strong></td><td>비신사적 행위에 부과하는 1점 감점 페널티</td></tr>
+          <tr><td><strong>풋 폴트 (Foot Fault)</strong></td><td>서브 시 발이 허용 구역 밖에 놓인 상태</td></tr>
+          <tr><td><strong>캐리 (Carry)</strong></td><td>공을 패들로 받아내거나 실어 이동시키는 행위 — 금지</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">3</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">코트 및 장비 (Court and Equipment)</div>
+        <div class="sec-sub">코트 규격, 네트, 공, 패들 기준</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">3.A 코트 규격</div>
+        <table class="kv-table">
+          <tr><th>항목</th><th>규격</th></tr>
+          <tr><td>코트 크기</td><td>20피트 × 44피트 (단식·복식 동일)</td></tr>
+          <tr><td>최소 플레잉 서피스</td><td>30피트 × 60피트</td></tr>
+          <tr><td>토너먼트 권장</td><td>34피트 × 64피트</td></tr>
+          <tr><td>라인 폭</td><td>2인치 (5cm)</td></tr>
+          <tr><td>논-발리 존</td><td>네트에서 각 7피트 (라인 포함)</td></tr>
+          <tr><td>센터라인</td><td>서비스 코트를 좌우로 2분할</td></tr>
+        </table>
+        <div class="rule-note">라인은 코트 안쪽에 해당합니다 — 공이 라인에 닿으면 <strong>인(In)</strong>으로 판정합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">3.B 네트 규격</div>
+        <table class="kv-table">
+          <tr><th>항목</th><th>규격</th></tr>
+          <tr><td>사이드 높이</td><td>36인치 (91.4cm)</td></tr>
+          <tr><td>센터 높이</td><td>34인치 (86.4cm)</td></tr>
+          <tr><td>포스트 간격</td><td>22피트 (6.7m)</td></tr>
+          <tr><td>네트 소재</td><td>공이 통과하지 못하는 메시 소재</td></tr>
+          <tr><td>상단 테이프</td><td>흰색, 2인치 폭 이내</td></tr>
+        </table>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">3.C 공(볼) 규격</div>
+        <div class="rule-text">USA Pickleball 공인 볼 목록에 등재된 제품만 사용 가능합니다.</div>
+        <table class="kv-table" style="margin-top:8px">
+          <tr><th>항목</th><th>기준</th></tr>
+          <tr><td>색상</td><td>단일 색상 (무늬 없음)</td></tr>
+          <tr><td>표면</td><td>매끄러운 원형 구 형태</td></tr>
+          <tr><td>표기</td><td>제조사명 또는 로고 필수 표기</td></tr>
+          <tr><td>실내용</td><td>구멍 크기 더 큰 타입</td></tr>
+          <tr><td>실외용</td><td>구멍 크기 더 작은 타입</td></tr>
+        </table>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">3.D 패들 규격</div>
+        <table class="kv-table">
+          <tr><th>항목</th><th>기준</th></tr>
+          <tr><td>전체 길이</td><td>17인치(43.2cm) 이하</td></tr>
+          <tr><td>길이 + 너비 합계</td><td>24인치(61cm) 이하</td></tr>
+          <tr><td>두께·무게</td><td>제한 없음</td></tr>
+          <tr><td>금지 소재</td><td>러버, 샌드페이퍼, 모래입자 코팅 등 스핀 증가 재질</td></tr>
+        </table>
+        <div class="rule-note highlight">허용 개조: 엣지 가드 테이프, 밸런스/웨이트 테이프, 그립 교체, 이름 스티커, 보호 코팅</div>
+        <div class="rule-note warn">금지 개조: 러버 부착, 접착 물질 도포, 반사 코팅, 패들 면 손상 또는 거칠게 만들기</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-box">
+    <span>📄</span>
+    <span>출처: <a href="https://usapickleball.org/docs/rules/USAP-Official-Rulebook.pdf" target="_blank">2026 USA Pickleball Official Rulebook</a> — usapickleball.org</span>
+  </div>
+  <a class="back-btn" href="#top">▲ 맨 위로</a>
+</div>
+
+<!-- ===================== PART II ===================== -->
+<div id="part2" class="tab-content">
+  <div class="part-intro">
+    <div class="part-intro-title">Part II — 일반 경기 규칙 (General Rules of Play)</div>
+    <div class="part-intro-desc">실제 경기에서 적용되는 모든 규칙을 다룹니다. 득점·서브·라인 콜·폴트·랠리 상황·논-발리 존 등 핵심 규칙이 여기에 있습니다.</div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="sec-group">
+    <div class="sec-header open" onclick="toggleSec(this)">
+      <div class="sec-num">4</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">득점 방식 (Point Scoring)</div>
+        <div class="sec-sub">사이드아웃 스코어링 기본 원칙</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body open">
+      <div class="rule-block">
+        <div class="rule-id">4.A 기본 득점</div>
+        <div class="rule-text"><strong>서브 팀만 점수를 얻을 수 있습니다.</strong> 서브 팀이 랠리에서 이기면 1점을 얻고, 지면 사이드아웃(서브권 이동)이 됩니다. 리시브 팀이 랠리에서 이겨도 점수는 없으며 서브권만 얻습니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">4.B 승리 조건</div>
+        <div class="rule-text">기본 게임은 <strong>11점 선취</strong>이며, 반드시 <strong>2점 차이 이상</strong>으로 이겨야 합니다. 10-10 동점이 되면 어느 팀이든 2점 차를 낼 때까지 계속합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">4.C 랠리 스코어링 (잠정 규정)</div>
+        <div class="rule-text">토너먼트 디렉터가 허용할 경우 <strong>랠리 스코어링</strong>을 사용할 수 있습니다. 모든 랠리 승자에게 점수가 부여됩니다. 자세한 내용은 Section 14.A 참조.</div>
+        <div class="rule-note warn">더블 엘리미네이션 복식, 2026 National Championship 이벤트에는 랠리 스코어링 적용 불가</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">5</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">선수 포지션 및 서브 순서 (Player Positions and Serving Sequence)</div>
+        <div class="sec-sub">서브 위치와 서버 교체 규칙</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">5.A 싱글(단식) 서브 위치</div>
+        <div class="rule-text">서버의 현재 점수를 기준으로 서브 위치를 결정합니다.</div>
+        <table class="kv-table" style="margin-top:8px">
+          <tr><th>서버 점수</th><th>서브 위치</th></tr>
+          <tr><td>0점 또는 짝수</td><td>오른쪽(우측) 서비스 코트</td></tr>
+          <tr><td>홀수</td><td>왼쪽(좌측) 서비스 코트</td></tr>
+        </table>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">5.B 더블(복식) 서브 순서</div>
+        <div class="rule-text">복식에서는 두 선수 모두 서브 기회를 가집니다. 단, <strong>게임 시작 시 첫 번째 팀의 스타팅 서버는 세컨드 서버로만 활동</strong>합니다(첫 팀이 불리하지 않게 하기 위해).</div>
+        <div class="rule-note">서브 스코어 콜: <strong>팀 점수 — 상대 점수 — 서버 번호(1 또는 2)</strong> 순으로 부릅니다. 예: "4-2-1"</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">5.C 잘못된 서버/포지션 처리</div>
+        <div class="rule-text">잘못된 선수가 서브하거나 잘못된 위치에서 서브한 경우, 리턴 오브 서브 전에 발견하면 수정 가능합니다. 랠리가 진행된 후 발견한 경우는 Section 5에 따라 처리합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">6</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">준비 상태 및 스코어 콜 (Player Readiness and Calling the Score)</div>
+        <div class="sec-sub">서브 전 절차</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">6.A 준비 안 됨 신호</div>
+        <div class="rule-text">선수는 스코어 콜 전 다음 중 하나로 "준비 안 됨"을 알릴 수 있습니다: <strong>패들 들기, 비패들 손 들기, 서버에게 등 돌리기</strong></div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">6.B 서브 타이머</div>
+        <div class="rule-text">스코어 콜 후 <strong>10초 이내</strong>에 서브해야 합니다. 위반 시 폴트.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">6.C 스코어 이의 제기</div>
+        <div class="rule-text">스코어에 이의가 있을 경우 <strong>리턴 오브 서브 전</지strong>까지만 이의를 제기할 수 있습니다. 리턴 후에는 현재 스코어로 인정됩니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">7</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">서브 (Serving)</div>
+        <div class="sec-sub">발리 서브 & 드롭 서브 규칙</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">7.A 서브 방식 두 가지</div>
+        <div class="rule-text">서버는 아래 두 가지 방식 중 하나를 선택할 수 있습니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">7.B 발리 서브 (Volley Serve)</div>
+        <div class="rule-text">손에서 볼을 놓아 공중에서 타격하는 서브. 아래 세 가지 조건을 모두 충족해야 합니다:</div>
+        <div class="rule-note"><strong>① 상향 스윙:</strong> 패들이 위로 올라가는 방향으로 스윙해야 합니다<br><strong>② 패들 헤드 위치:</strong> 타격 순간 패들 헤드가 손목보다 아래에 있어야 합니다<br><strong>③ 타격 위치:</strong> 볼이 허리(배꼽) 아래에서 타격되어야 합니다</div>
+        <div class="rule-note warn">릴리스 시 볼에 스핀을 주는 것은 금지입니다. 단, 패들 페이스에서 중력으로 볼이 굴러 떨어지는 것은 허용됩니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">7.C 드롭 서브 (Drop Serve)</div>
+        <div class="rule-text">볼을 자연 낙하시켜 바운스 후 타격하는 서브.</div>
+        <div class="rule-note highlight"><strong>발리 서브 3가지 조건이 모두 적용되지 않습니다</strong><br>바운스 횟수·위치 제한 없음. 힘을 가해 던지거나 위로 올리는 행위는 금지</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">7.D 서브 위치 규정</div>
+        <div class="rule-text">서버는 <strong>베이스라인 뒤, 사이드라인 연장선 안쪽, 센터라인 연장선 한쪽</strong>에 위치해야 합니다. 서브 도중 발이 라인을 밟거나 코트 안으로 들어오면 <strong>풋 폴트</strong>입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">7.E 서브 착지 조건</div>
+        <div class="rule-text">서브볼은 반드시 <strong>대각선 방향 서비스 코트</strong>에 착지해야 합니다. 다음의 경우 폴트입니다:</div>
+        <div class="rule-note danger">• 논-발리 존(키친) 또는 키친 라인에 착지한 경우<br>• 대각선 반대편 서비스 코트에 착지한 경우<br>• 아웃 라인 밖에 착지한 경우<br>• 네트에 걸려 착지 실패한 경우</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">8</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">라인 콜 (Line Calls)</div>
+        <div class="sec-sub">인/아웃 판정 책임과 원칙</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">8.A 판정 책임</div>
+        <div class="rule-text">선수는 <strong>자신의 코트 끝 라인(베이스라인·사이드라인)</strong>에 대한 아웃 판정 책임이 있습니다. 상대 코트에 대한 판정은 상대 선수의 책임입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">8.B 불확실한 볼</div>
+        <div class="rule-text">볼이 인인지 아웃인지 확실하지 않은 경우 <strong>반드시 인(In)으로 처리</strong>합니다. 상대방에게 유리한 방향으로 결정하는 것이 원칙입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">8.C 라인 위에 닿은 볼</div>
+        <div class="rule-text">볼이 <strong>라인 위에 조금이라도 닿으면 인(In)</strong>입니다. 볼 전체가 라인 밖에 있어야 아웃입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">8.D 파트너 간 의견 불일치</div>
+        <div class="rule-text">복식에서 파트너 간 라인 콜 의견이 다를 경우 <strong>인(In)으로 결정</strong>합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">8.E 관중 판정 금지</div>
+        <div class="rule-text">라인 콜에 대해 관중에게 물어보는 것은 허용되지 않습니다. 단, 심판이 관중을 목격자로 활용할 수는 있습니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">9</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">데드볼, 폴트, 힌더 (Dead Balls, Faults, and Hinders)</div>
+        <div class="sec-sub">랠리를 멈추는 상황들</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">9.A 폴트 콜 의무</div>
+        <div class="rule-text">선수는 <strong>자신과 파트너의 폴트를 즉시 콜해야</strong> 합니다. 폴트를 콜하지 않는 것은 비신사적 행위로 간주될 수 있습니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">9.B 상대방에게 콜 가능한 폴트</div>
+        <div class="rule-text">선수가 상대방의 폴트를 콜할 수 있는 경우는 <strong>논-발리 존 위반과 서비스 풋 폴트</strong> 두 가지뿐입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">9.C 주요 폴트 목록</div>
+        <div class="rule-text">다음 상황은 폴트입니다:</div>
+        <div class="rule-note danger">• 서브가 논-발리 존(키친)에 착지<br>• 서브볼이 네트를 통과하지 못함<br>• 볼이 바운스 전 코트 밖에서 타격됨<br>• 볼이 2회 바운스 전에 반환하지 못함<br>• 선수 신체 또는 복장이 코트 밖에서 볼을 타격<br>• 논-발리 존 내에서 발리<br>• 볼을 두 번 타격하거나 캐리<br>• 서버 또는 서버 파트너가 서브 전 베이스라인 밖을 벗어남</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">9.D 힌더 (Hinder)</div>
+        <div class="rule-text">경기 외적 방해요소(다른 코트의 볼 침입, 관중 방해, 기타 외부 장애)가 발생하면 <strong>누구든 힌더를 콜</strong>할 수 있습니다. 힌더 발생 시 랠리는 <strong>리플레이(재경기)</strong>합니다.</div>
+        <div class="rule-note">선수가 의도적으로 힌더를 만들어 내거나 불필요하게 콜하는 경우 비신사적 행위로 처리됩니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 10 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">10</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">랠리 상황 (Rally Situations)</div>
+        <div class="sec-sub">투-바운스 룰, 더블 히트, 부상 등</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">10.A 투-바운스 룰 (Two-Bounce Rule)</div>
+        <div class="rule-text">서브 후 반드시 아래 순서를 따라야 합니다:</div>
+        <div class="rule-note highlight"><strong>서브 → 리시버가 바운스 후 반환 → 서버 팀이 바운스 후 반환 → 이후 발리 가능</strong><br>즉, 서브와 첫 리턴은 반드시 바운스 후 타격해야 합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">10.B 더블 바운스</div>
+        <div class="rule-text">볼이 2회 바운스되기 전에 반환하지 못하면 폴트입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">10.C 더블 히트 (Double Hit)</div>
+        <div class="rule-text"><strong>허용:</strong> 하나의 연속 스트로크 중 볼이 패들에 두 번 닿는 경우(비의도적)<br><strong>폴트:</strong> 비연속 동작으로 두 번 타격하거나, 복식에서 두 선수가 동시에 타격하는 경우</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">10.D 부상 및 장비 문제</div>
+        <div class="rule-text">랠리 중 부상이 발생하거나 장비 문제가 생기더라도 <strong>랠리는 끝날 때까지 계속</strong>해야 합니다. 볼 파손이 확인된 경우 해당 랠리가 종료된 후 교체합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 11 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">11</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">논-발리 존 위반 (Non-Volley Zone Infractions)</div>
+        <div class="sec-sub">키친 관련 핵심 규칙</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">11.A 기본 원칙</div>
+        <div class="rule-text">발리(바운스 없는 타격)는 반드시 <strong>논-발리 존 밖</strong>에서만 할 수 있습니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">11.B 신체 접촉 폴트</div>
+        <div class="rule-text">발리 동작 중 선수의 신체, 복장, 패들, 또는 선수가 착용/휴대한 물건이 논-발리 존에 닿으면 <strong>폴트</strong>입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">11.C 모멘텀 폴트</div>
+        <div class="rule-text">발리 후 관성(모멘텀)으로 논-발리 존에 들어가면 볼이 데드가 된 후라도 <strong>폴트</strong>입니다.</div>
+        <div class="rule-note warn">발리 후 파트너에게 밀려 논-발리 존에 들어가도 폴트입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">11.D 논-발리 존 내 선수</div>
+        <div class="rule-text">논-발리 존 안에 있는 선수는 볼이 먼저 바운스해야 타격할 수 있습니다. 논-발리 존 밖으로 완전히 나오기 전에 발리를 시도하면 폴트입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">11.E 논-발리 존 정의 (2026 명확화)</div>
+        <div class="rule-text">논-발리 존은 <strong>2차원 평면</strong>으로 정의됩니다. 플레잉 서피스 위 공중으로는 확장되지 않습니다. 즉, 선수가 공중에서 점프하여 논-발리 존 위를 넘어가며 발리하는 것은 해당 규칙 위반이 아닙니다(단, 착지는 논-발리 존 밖이어야 합니다).</div>
+        <div class="rule-note highlight">2026 신규 명확화: 논-발리 존 = 2D 평면, 공중 확장 없음</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 12 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">12</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">경기 중 패들 (The Paddle During Play)</div>
+        <div class="sec-sub">패들 사용 규칙</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">12.A 패들 사용 기준</div>
+        <div class="rule-text">한 랠리 중 패들은 <strong>1개만 사용</strong>할 수 있습니다. 볼을 칠 때는 반드시 패들을 손에 쥐고 있어야 합니다. 한 손 또는 양손 그립 모두 허용되며, 손을 바꾸는 것도 가능합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">12.B 캐리 금지</div>
+        <div class="rule-text">패들로 볼을 받아 내거나 실어서 이동시키는 행위("캐리")는 폴트입니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 13 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">13</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">경기 중 네트 & 지지대 (The Net During Play)</div>
+        <div class="sec-sub">네트 관련 특수 상황</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">13.A 네트 접촉</div>
+        <div class="rule-text">볼이 네트(상단 테이프 포함)에 닿고 상대 코트로 넘어가면 <strong>계속 경기</strong>합니다 (흔히 "레트" 또는 "넷볼"이라 부르지만 피클볼에서는 리플레이 없음).</div>
+        <div class="rule-note highlight">피클볼은 서브볼이 네트에 맞아 넘어가도 폴트가 아닙니다. 단, 네트 지지대에 닿으면 폴트.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">13.B 서브볼과 네트 지지대</div>
+        <div class="rule-text">서브볼이 <strong>네트 지지대(포스트)에 닿으면 폴트</strong>입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">13.C 리턴볼과 네트 지지대</div>
+        <div class="rule-text">랠리 중 볼(리턴볼)이 네트 지지대에 맞아 코트 내로 들어오면 <strong>리플레이</strong>합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">13.D 포스트 우회 리턴</div>
+        <div class="rule-text">볼이 네트 포스트 바깥쪽을 돌아서 상대 코트에 들어오면 유효한 리턴입니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">13.E 네트 통과 폴트</div>
+        <div class="rule-text">다음의 경우 폴트입니다:</div>
+        <div class="rule-note danger">• 볼이 네트 아래를 통과한 경우<br>• 볼이 포스트와 네트 사이를 통과한 경우<br>• 선수가 볼을 먼저 치지 않고 네트 평면을 넘어간 경우</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 14 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">14</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">표준 경기 변형 (Variations on Standard Pickleball)</div>
+        <div class="sec-sub">랠리 스코어링 & 미니-싱글</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">14.A 랠리 스코어링 (Rally Scoring) — 잠정 규정</div>
+        <div class="rule-text">매 랠리 승자에게 득점이 부여되는 방식입니다.</div>
+        <div class="rule-note highlight"><strong>주요 특징:</strong><br>• 모든 랠리 승자 득점<br>• 더블에서 사이드아웃 후 1명만 서브<br>• 스코어 콜: 2개 숫자(자팀-상대팀)<br>• 서브 위치는 현재 점수로 결정</div>
+        <div class="rule-note warn">적용 불가: 더블 엘리미네이션 복식 / 2026 USA Pickleball Golden Ticket 이벤트 / 2026 National Championship</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">14.B 미니-싱글 (Mini-Singles)</div>
+        <div class="rule-text">표준 20×44피트 코트를 사용하지만, 각 랠리마다 선수 점수를 기준으로 코트 한쪽(좌 또는 우)만 사용하는 변형입니다. 센터라인을 논-발리 존 근처까지 연장하는 추가 라인이 필요합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-box">
+    <span>📄</span>
+    <span>출처: <a href="https://usapickleball.org/docs/rules/USAP-Official-Rulebook.pdf" target="_blank">2026 USA Pickleball Official Rulebook</a></span>
+  </div>
+  <a class="back-btn" href="#top">▲ 맨 위로</a>
+</div>
+
+<!-- ===================== PART III ===================== -->
+<div id="part3" class="tab-content">
+  <div class="part-intro">
+    <div class="part-intro-title">Part III — 토너먼트 경기 (Tournament Play)</div>
+    <div class="part-intro-desc">공식 대회 운영에 관한 규정입니다. 대회 형식, 심판 역할, 선수 의무, 타임아웃, 비신사적 행위 처벌 등을 다룹니다.</div>
+  </div>
+
+  <!-- Section 15 -->
+  <div class="sec-group">
+    <div class="sec-header open" onclick="toggleSec(this)">
+      <div class="sec-num">15</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">토너먼트 이벤트 및 스코어링 (Tournament Event and Scoring Options)</div>
+        <div class="sec-sub">대회 포맷과 득점 옵션</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body open">
+      <div class="rule-block">
+        <div class="rule-id">15.A 이벤트 구분</div>
+        <div class="rule-text">토너먼트 이벤트 카테고리:</div>
+        <div class="rule-note">남성 단식/복식 · 여성 단식/복식 · 혼성 복식 · 휠체어 · 적응형 스탠딩 · 하이브리드 복식</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">15.B 대회 포맷</div>
+        <table class="kv-table">
+          <tr><th>포맷</th><th>설명</th></tr>
+          <tr><td>더블 엘리미네이션</td><td>2패 시 탈락 (컨솔레이션 포함)</td></tr>
+          <tr><td>싱글 엘리미네이션</td><td>1패 시 탈락 (컨솔레이션 유/무)</td></tr>
+          <tr><td>라운드 로빈</td><td>모든 참가자와 1회씩 대전</td></tr>
+          <tr><td>풀 플레이</td><td>전체 경기 진행 후 순위 결정</td></tr>
+          <tr><td>팀 플레이</td><td>팀 단위 대항전</td></tr>
+        </table>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">15.C 게임 점수 옵션</div>
+        <div class="rule-text">토너먼트에서 사용 가능한 게임 점수: <strong>11점 / 15점 / 21점</strong> (모두 2점 차 승리). 2승 3선제 또는 3승 5선제로 운영 가능.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">15.D 동점 타이브레이커 (라운드 로빈)</div>
+        <div class="rule-text">동점 시 다음 순서로 순위를 결정합니다:</div>
+        <div class="rule-note">① 헤드-투-헤드 성적 → ② 점수 차(득실차) → ③ 개인전 점수 차 → ④ 총 득점 → ⑤ 동전 던지기</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 16 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">16</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">대회 디렉터 책임 (Tournament Director Responsibilities)</div>
+        <div class="sec-sub">토너먼트 총괄 운영</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">16.A 주요 권한</div>
+        <div class="rule-text">대회 디렉터(TD)는 토너먼트 전반을 총괄합니다. 주요 권한:</div>
+        <div class="rule-note">• 공인 볼 선택<br>• 스타팅 서버 식별 방법 지정<br>• 라인 저지 배치 결정<br>• 경기 일정 변경 통보<br>• 선수 복장 변경 요구<br>• 심판·라인 저지 교체 최종 권한</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">16.B 로컬 규칙 예외</div>
+        <div class="rule-text">USA Pickleball 규정을 벗어나는 로컬 규칙 예외는 반드시 <strong>USA Pickleball 심판 담당 Managing Director의 사전 승인</strong>을 받아야 합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 17 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">17</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">심판 책임 (Referee Responsibilities)</div>
+        <div class="sec-sub">경기 진행 및 판정 권한</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">17.A 경기 전 심판 역할</div>
+        <div class="rule-text">• 패들 검사(공인 여부 확인)<br>• 코트 상태 확인<br>• 코인 토스 또는 숫자 선택으로 서브권/엔드 결정</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">17.B 경기 중 심판 역할</div>
+        <div class="rule-text">• 스코어 콜<br>• 폴트·리플레이 콜<br>• 네트 높이 재확인<br>• 라인 콜 어필 처리<br>• 선수 행동 관리 (버발 경고 → 테크니컬 워닝 → 테크니컬 파울)</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">17.C 타임 콜</div>
+        <div class="rule-text">심판은 <strong>15초 경고</strong> 후 "타임 인"을 선언하여 경기를 재개합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 18 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">18</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">경기 전 선수 책임 (Player Pre-Match Responsibilities)</div>
+        <div class="sec-sub">선수가 지켜야 할 사전 의무</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">18.A 공인 패들 의무 사용</div>
+        <div class="rule-text">USA Pickleball 공인 패들을 사용해야 합니다.</div>
+        <div class="rule-note warn"><strong>경기 전 비공인 패들 발견:</strong> 패널티 없이 교체 가능<br><strong>경기 중 비공인 패들 발견:</strong> 매치 몰수</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">18.B 출석 의무</div>
+        <div class="rule-text"><strong>경기 시작 후 10분 이내 미출석:</strong> 게임 몰수<br><strong>15분 이내 미출석:</strong> 매치 몰수</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">18.C 복장 규정</div>
+        <div class="rule-text">• 부적절한 그래픽이 있는 복장 금지<br>• 볼 색과 유사한 색의 상의 착용 금지<br>• 이어폰·헤드폰 착용 금지 (보청기 제외)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 19 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">19</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">토너먼트 라인 콜 (Tournament Line Calls)</div>
+        <div class="sec-sub">공식 대회 판정 기준</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">19.A 심판 판정 책임</div>
+        <div class="rule-text">심판은 다음을 직접 판정합니다:</div>
+        <div class="rule-note">서비스 풋 폴트 · 숏 서브(키친 착지) · 논-발리 존 폴트</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">19.B 라인 저지 배치 시</div>
+        <div class="rule-text">라인 저지가 있는 경우 선수는 <strong>센터라인</strong>만 판정 책임이 있습니다. 나머지는 라인 저지가 담당합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">19.C 라인 콜 어필</div>
+        <div class="rule-text">어필은 <strong>랠리를 끝낸 마지막 샷에 한해</strong>, <strong>다음 서브 전까지</strong> 가능합니다. 심판은 "인"임이 명확하면 반드시 오버룰해야 합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 20 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">20</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">토너먼트 경기 상황 (Tournament Match Situations)</div>
+        <div class="sec-sub">서브 판정, 어필 제도, 코칭 규정</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">20.A 서브 폴트 세부 기준</div>
+        <div class="rule-text">발리 서브 폴트 기준 (아래 중 하나라도 위반 시):</div>
+        <div class="rule-note danger">• 상향 스윙 없이 타격<br>• 타격 시 패들 헤드가 손목보다 높음<br>• 볼이 허리보다 높은 위치에서 타격</div>
+        <div class="rule-text" style="margin-top:8px">드롭 서브 폴트 기준:</div>
+        <div class="rule-note danger">• 볼을 위로 던지거나 옆으로 밀어 낙하시킴<br>• 볼을 강제로 아래로 눌러 바운스시킴</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">20.J 심판 판정 어필 제도 (2026 신설)</div>
+        <div class="rule-text">선수는 심판의 판정을 헤드 심판 또는 토너먼트 디렉터에게 어필할 수 있습니다.</div>
+        <div class="rule-note highlight"><strong>어필 철회:</strong> 타임아웃 1회 차감<br><strong>어필 기각:</strong> 테크니컬 워닝 + 타임아웃 차감<br><strong>어필 승인:</strong> 심판 판정 번복</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">20.K 코칭</div>
+        <div class="rule-text">코칭은 <strong>타임아웃 중 또는 게임 사이에만</strong> 허용됩니다. 랠리 중 코칭은 금지입니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 21 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">21</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">타임아웃 및 휴식 (Time-Outs and Breaks)</div>
+        <div class="sec-sub">타임아웃 횟수 및 시간 규정</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">21.A 스탠다드 타임아웃</div>
+        <table class="kv-table">
+          <tr><th>게임 점수</th><th>팀당 타임아웃 횟수</th><th>최대 시간</th></tr>
+          <tr><td>11점 게임</td><td>2회</td><td>각 1분</td></tr>
+          <tr><td>15점 게임</td><td>2회</td><td>각 1분</td></tr>
+          <tr><td>21점 게임</td><td>3회</td><td>각 1분</td></tr>
+        </table>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">21.B 엔드 체인지 (코트 교환)</div>
+        <table class="kv-table">
+          <tr><th>게임 점수</th><th>코트 교환 시점</th></tr>
+          <tr><td>11점 게임</td><td>6점 시</td></tr>
+          <tr><td>15점 게임</td><td>8점 시</td></tr>
+          <tr><td>21점 게임</td><td>11점 시</td></tr>
+        </table>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">21.C 의료 타임아웃</div>
+        <div class="rule-text">매치 당 <strong>1회, 최대 15분</strong>. 의료진이 부상 유효 여부를 확인합니다. 15분 내 복귀 불가 시 기권 처리됩니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">21.D 기타 타임아웃</div>
+        <div class="rule-text"><strong>레퍼리 타임아웃:</strong> 출혈, 이물질 제거 등 긴급상황 시 심판이 선언<br><strong>게임 사이 타임아웃:</strong> 최대 2분 (엔드 교환 및 서브권 교환 포함)<br><strong>매치 사이:</strong> 최대 10분</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 22 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">22</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">비신사적 행위 및 페널티 (Unsportsmanlike Conduct)</div>
+        <div class="sec-sub">4단계 페널티 체계</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">22.A 페널티 4단계</div>
+        <div class="penalty-step">
+          <div class="penalty-circle p1">1</div>
+          <div class="penalty-info">
+            <div class="penalty-name">버발 워닝 (Verbal Warning)</div>
+            <div class="penalty-desc">경미한 위반. 득점 영향 없음. 매치 당 1회만 부여 가능.</div>
+          </div>
+        </div>
+        <div class="penalty-step">
+          <div class="penalty-circle p2">2</div>
+          <div class="penalty-info">
+            <div class="penalty-name">테크니컬 워닝 (Technical Warning)</div>
+            <div class="penalty-desc">추가 위반 시 또는 중간 수준 위반. 득점 영향 없음.</div>
+          </div>
+        </div>
+        <div class="penalty-step">
+          <div class="penalty-circle p3">3</div>
+          <div class="penalty-info">
+            <div class="penalty-name">테크니컬 파울 (Technical Foul)</div>
+            <div class="penalty-desc">위반 선수 팀 <strong>1점 감점</strong> (0점이면 상대 팀 1점 추가). 반복 위반 시 즉시 적용 가능.</div>
+          </div>
+        </div>
+        <div class="penalty-step">
+          <div class="penalty-circle p4">4</div>
+          <div class="penalty-info">
+            <div class="penalty-name">게임/매치 몰수 (Forfeit)</div>
+            <div class="penalty-desc">테크니컬 워닝 1회 + 테크니컬 파울 1회 조합, 또는 테크니컬 워닝 3회 누적 시. 위험한 패들/볼 투척, 복장 거부 등은 즉시 매치 몰수.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 23 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">23</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">기권 및 철수 (Retirements and Withdrawals)</div>
+        <div class="sec-sub">경기 중단 절차</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">23.A 기권 (Retirement)</div>
+        <div class="rule-text">경기 도중 기권. 복식에서 한 선수가 기권 시 <strong>파트너가 단독 출전을 선택</strong>할 수 있습니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">23.B 철수 (Withdrawal)</div>
+        <div class="rule-text">해당 브라켓 전체 출전을 포기. 기권/철수 시 <strong>라운드 로빈 성적은 무효 처리</strong>되어 순위에 반영되지 않습니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 24 -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num">24</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">무심판 토너먼트 (Non-Officiated Tournament Play)</div>
+        <div class="sec-sub">심판 없이 진행되는 대회 규정</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">24.A 개요</div>
+        <div class="rule-text">심판 없이 진행되는 토너먼트 경기의 특별 규정입니다. 선수들이 자체적으로 라인 콜, 폴트 판정, 스코어 관리를 담당합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">24.B 분쟁 해결</div>
+        <div class="rule-text">선수 간 의견 불일치 시 <strong>합의 또는 리플레이</strong>로 해결합니다. 합의가 되지 않을 경우 대회 디렉터에게 문의합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-box">
+    <span>📄</span>
+    <span>출처: <a href="https://usapickleball.org/docs/rules/USAP-Official-Rulebook.pdf" target="_blank">2026 USA Pickleball Official Rulebook</a></span>
+  </div>
+  <a class="back-btn" href="#top">▲ 맨 위로</a>
+</div>
+
+<!-- ===================== PART IV ===================== -->
+<div id="part4" class="tab-content">
+  <div class="part-intro">
+    <div class="part-intro-title">Part IV — 포용적 경기 규칙 (Rules for Inclusive Play)</div>
+    <div class="part-intro-desc">2026년에 공식 카테고리로 확대된 휠체어 선수, 적응형 스탠딩, 하이브리드 복식에 대한 특별 규정을 다룹니다.</div>
+  </div>
+
+  <!-- Section 25 -->
+  <div class="sec-group">
+    <div class="sec-header open" onclick="toggleSec(this)">
+      <div class="sec-num">25</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">휠체어·적응형·하이브리드 복식 (Wheelchair, Adaptive Standing and Hybrid Doubles Play)</div>
+        <div class="sec-sub">포용적 경기를 위한 변형 규칙</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body open">
+      <div class="rule-block">
+        <div class="rule-id">25.A 휠체어 경기 (Wheelchair Play)</div>
+        <div class="rule-text"><strong>2바운스 허용:</strong> 휠체어 선수는 볼이 2회 바운스되는 것이 허용됩니다.</div>
+        <div class="rule-note highlight"><strong>바운스 조건:</strong><br>• 첫 번째 바운스: 반드시 코트 내에서 발생해야 합니다<br>• 두 번째 바운스: 코트 안팎 어디서든 발생해도 됩니다</div>
+        <div class="rule-text" style="margin-top:10px"><strong>서브 규정 완화:</strong></div>
+        <div class="rule-note">• 휠체어 선수는 서브 위치에서 한 바퀴 이내로 이동하여 서브 가능<br>• 서브 시 휠체어 바퀴 또는 발이 코트 내에 있거나 엔드라인/센터라인을 밟아도 폴트가 아님<br>• 단, 한 바퀴(wheel) 이상 앞으로 이동하거나 엔드라인을 완전히 넘으면 폴트</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">25.B 적응형 스탠딩 (Adaptive Standing) — 2026 신설</div>
+        <div class="rule-text">특정 신체 조건의 선수를 위한 변형 규칙입니다.</div>
+        <div class="rule-note highlight">2026년에 공식 카테고리로 신설된 분류입니다.</div>
+        <div class="rule-text" style="margin-top:8px">다음과 같은 조건의 선수를 위해 설계되었습니다:</div>
+        <div class="rule-note">• 의족 또는 보조기구를 사용하는 선수<br>• 균형 또는 이동성에 영향을 주는 신체적 조건이 있는 선수<br>• 스탠딩 자세로 경기하지만 일부 표준 규칙 적용이 어려운 선수</div>
+        <div class="rule-text" style="margin-top:8px">적용 가능한 변형 규칙 예시:</div>
+        <div class="rule-note">• 서브 위치에 관한 일부 요건 완화<br>• 보조기구와 라인 접촉에 관한 예외 적용<br>• 특정 풋 폴트 규정의 유연한 적용</div>
+        <div class="rule-note warn">적응형 스탠딩 카테고리 참가 자격은 USA Pickleball이 정한 의학적·기능적 분류 기준에 따릅니다. 자격 신청은 USA Pickleball 공식 채널을 통해 진행합니다.</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">25.C 하이브리드 복식 (Hybrid Doubles) — 2026 신설</div>
+        <div class="rule-text">휠체어 선수와 스탠딩 선수가 한 팀을 이루는 혼합 복식입니다.</div>
+        <div class="rule-note highlight">2026년에 공식 토너먼트 카테고리로 신설되었습니다.</div>
+        <div class="rule-text" style="margin-top:8px"><strong>규칙 적용 원칙:</strong></div>
+        <div class="rule-note">각 선수에게 자신의 카테고리 규칙이 적용됩니다.<br>• 휠체어 선수 → 25.A의 휠체어 규칙 적용 (2바운스 허용 등)<br>• 스탠딩 선수 → 일반 표준 규칙 적용</div>
+        <div class="rule-text" style="margin-top:8px"><strong>서브 및 리시브:</strong></div>
+        <div class="rule-note">• 복식 서브 순서는 표준 복식과 동일<br>• 각 선수는 자신의 카테고리 서브 규칙을 따름</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appendix A -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num" style="font-size:10px">부록 A</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">폴트 및 리플레이 요약 (Faults and Replays)</div>
+        <div class="sec-sub">모든 폴트/리플레이 상황 정리</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">폴트 (Fault) — 랠리 종료, 서브 팀이면 사이드아웃 / 리시브 팀이면 서브 팀 득점</div>
+        <div class="rule-note danger">
+          <strong>서브 관련:</strong><br>
+          • 서브가 키친(논-발리 존) 또는 키친 라인에 착지<br>
+          • 서브가 코트 밖으로 나감<br>
+          • 서브 시 발리 서브 3가지 조건 위반<br>
+          • 드롭 서브 시 볼을 던지거나 위로 올려 낙하<br>
+          • 풋 폴트 (서브 시 발 위치 위반)<br>
+          • 서브볼이 네트 지지대(포스트)에 접촉<br><br>
+          <strong>랠리 관련:</strong><br>
+          • 볼이 코트 밖으로 나감<br>
+          • 투-바운스 룰 위반 (첫 서브/리턴을 바운스 전 발리)<br>
+          • 볼이 2회 바운스 전에 반환 못함<br>
+          • 논-발리 존에서 발리 또는 모멘텀 접촉<br>
+          • 더블 히트 (비연속 또는 두 선수 동시 타격)<br>
+          • 캐리 (볼을 실어 나르기)<br>
+          • 볼이 네트 아래 또는 포스트-네트 사이 통과<br>
+          • 선수가 볼 없이 네트 평면 넘어감<br>
+          • 선수 또는 의복이 네트에 접촉 (랠리 중)
+        </div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">리플레이 (Replay) — 랠리 재경기</div>
+        <div class="rule-note highlight">
+          • 힌더 콜 (외부 방해 요소)<br>
+          • 리턴볼이 네트 지지대에 맞아 코트 내 착지<br>
+          • 심판이 경기를 잘못 중단한 경우<br>
+          • 선수 준비 전 서브가 시행된 경우
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appendix B -->
+  <div class="sec-group">
+    <div class="sec-header" onclick="toggleSec(this)">
+      <div class="sec-num" style="font-size:10px">부록 B</div>
+      <div class="sec-title-wrap">
+        <div class="sec-title">규정집 우선순위 및 기본 원칙 (Rulebook Priorities and Guiding Principles)</div>
+        <div class="sec-sub">규정 해석의 기본 철학</div>
+      </div>
+      <div class="sec-arrow">▶</div>
+    </div>
+    <div class="sec-body">
+      <div class="rule-block">
+        <div class="rule-id">기본 원칙</div>
+        <div class="rule-text">규정이 명확하게 해결하지 못하는 상황이 발생할 경우 아래 원칙을 따릅니다:</div>
+        <div class="rule-note highlight">
+          <strong>① 공정성 (Fairness):</strong> 어떤 결정이 경기를 가장 공정하게 만드는가<br>
+          <strong>② 안전 (Safety):</strong> 선수의 안전이 항상 최우선<br>
+          <strong>③ 경기의 흐름 (Spirit of the Game):</strong> 피클볼의 우호적이고 즐거운 정신 유지<br>
+          <strong>④ 의심의 여지:</strong> 명확하지 않은 경우 볼은 인(In), 폴트 없음으로 처리
+        </div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-id">규정 우선순위</div>
+        <div class="rule-note">USA Pickleball 규정 > 대회 디렉터의 사전 승인된 로컬 규칙 > 경기 상황별 심판 판단</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="source-box">
+    <span>📄</span>
+    <span>출처: <a href="https://usapickleball.org/docs/rules/USAP-Official-Rulebook.pdf" target="_blank">2026 USA Pickleball Official Rulebook</a> · <a href="https://usapickleball.org/docs/rules/USAP-Rulebook-Change-Document.pdf" target="_blank">2026 Change Document</a></span>
+  </div>
+  <a class="back-btn" href="#top">▲ 맨 위로</a>
+</div>
+
+<div class="footer">
+  🏓 사이공 피클볼 모임<br>
+  <span style="margin-top:6px;display:inline-block">2026 USA Pickleball Official Rulebook 기준 · 한국어 번역본</span>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function toggleSec(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
